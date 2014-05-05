@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+org.jboss.tools.openshift.ApplicationId=5363c7124382ecb3fc000fab
+org.jboss.tools.openshift.ApplicationName=md
+org.jboss.tools.openshift.Connection=https\://luis%40bitamins.net@
+org.jboss.tools.openshift.Domain=bitamins
+org.jboss.tools.openshift.RemoteName=origin
