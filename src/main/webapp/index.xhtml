@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:r="http://richfaces.org">
+
+<ui:composition template="/templates/main.xhtml">
+	<ui:define name="content">
+		<r:notifyMessages stayTime="2000" />
+		<h:form id="mainForm" prependId="false">
+			<r:outputPanel ajaxRendered="true">
+				<r:region>
+
+					<r:panel rendered="#{!loggedIn}" styleClass="centered" style="width: 240px;">
+						<f:facet name="header">Enter your credentials.</f:facet>
+						<h:panelGrid columns="2">
+							<h:outputLabel>User:</h:outputLabel>
+							<h:inputText id="username" value="#{credentials.username}" required="true" size="25" />
+							<h:outputLabel>Pass:</h:outputLabel>
+							<h:inputSecret id="password" value="#{credentials.password}" required="true" size="25" />
+						</h:panelGrid>
+						<hr />
+						<div style="text-align: center;">
+							<h:commandButton value="Enter" action="#{appSession.checkCredentials}" />
+						</div>
+					</r:panel>
+
+					<r:panel rendered="#{loggedIn}" styleClass="centered" style="width: 240px;">
+						<f:facet name="header">Welcome to #{appName}.</f:facet>
+						<p>Your credentials have been verified.</p>
+						<hr />
+						<div style="text-align: center;">
+							<h:commandButton value="Exit" action="#{appSession.logout}" />
+						</div>
+					</r:panel>
+
+				</r:region>
+			</r:outputPanel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

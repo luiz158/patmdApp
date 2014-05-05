@@ -1,0 +1,13 @@
+body {
+	margin: 0px auto;
+	padding: 10px;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.centered {
+	margin: 0px auto;
+}
