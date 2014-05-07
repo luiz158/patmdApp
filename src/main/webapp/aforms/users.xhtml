@@ -49,22 +49,22 @@
 									<r:column>
 										<f:facet name="header">.</f:facet>
 										<r:commandLink>
-											<h:graphicImage library="images/icons" name="edit.gif" alt="Edit" />
+											<h:graphicImage library="images/icons" name="edit.png" alt="Edit" />
 											<r:ajax event="click" execute="@this" listener="#{viewUsers.load(u.id)}"
 												oncomplete="#{r:component('popup')}.show();" />
 										</r:commandLink>
 										&nbsp;
 										<r:commandLink actionListener="#{viewUsers.remove(u.id)}" execute="@this">
-											<h:graphicImage library="images/icons" name="delete.gif" alt="Delete" />
+											<h:graphicImage library="images/icons" name="remove.png" alt="Delete" />
 										</r:commandLink>
 										&nbsp;
 										<r:commandLink actionListener="#{appSession.impersonate(u.id)}" execute="@this"
 											rendered="#{appSession.systemUser.activeRole == 'sadmin'}">
-											<h:graphicImage library="images/icons" name="yellow_lamp.gif" alt="Impersonate" />
+											<h:graphicImage library="images/icons" name="impers.png" alt="Impersonate" />
 										</r:commandLink>
 										&nbsp;
 										<r:commandLink actionListener="#{loginManager.resetPassword(u.id)}" execute="@this">
-											<h:graphicImage library="images/icons" name="reload.gif" alt="Reset password" />
+											<h:graphicImage library="images/icons" name="lock.png" alt="Reset password" />
 										</r:commandLink>
 									</r:column>
 								</r:dataTable>
