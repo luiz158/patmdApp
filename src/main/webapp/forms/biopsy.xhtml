@@ -9,9 +9,8 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<div class="centered" style="width: 400px;">
-						<fieldset>
-							<legend>Generalidades:</legend>
+					<r:tabPanel styleClass="centered">
+						<r:tab header="Generalidades">
 							<h:panelGrid columns="2">
 								<h:outputLabel value="Biopsia:" />
 								<h:inputText size="40" required="true" />
@@ -32,37 +31,32 @@
 								<h:outputLabel value="Diagnostico clinico:" />
 								<h:inputTextarea required="true" cols="40" rows="10" />
 							</h:panelGrid>
-						</fieldset>
-					</div>
-					<br />
+						</r:tab>
 
-					<div class="centered" style="width: 800px;">
-						<fieldset>
-							<legend>Examenes:</legend>
+						<r:tab header="Examenes">
 							<h:panelGrid columns="2">
-								<h:panelGrid columns="1" width="400px">
-									<!-- Exam results -->
-									<h:outputLabel value="Examen macroscopico:" />
-									<h:inputTextarea required="true" cols="40" rows="10" />
-									<h:outputLabel value="Examen microscopico:" />
-									<h:inputTextarea required="true" cols="40" rows="10" />
-									<h:outputLabel value="Diagnostico:" />
-									<h:inputTextarea required="true" cols="40" rows="10" />
-									<h:outputLabel value="ADICAP:" />
-									<h:selectOneListbox>
-										<f:selectItems />
-									</h:selectOneListbox>
-									<h:outputLabel value="Fecha de lectura:" />
-									<r:calendar />
-								</h:panelGrid>
-								<h:panelGrid columns="1" width="400px">
-									<!-- Exam images -->
-									<h:outputLabel value="Imagenes:" />
-									<r:fileUpload />
-								</h:panelGrid>
+								<h:outputLabel value="Examen macroscopico:" />
+								<h:inputTextarea required="true" cols="40" rows="10" />
+								<h:outputLabel value="Examen microscopico:" />
+								<h:inputTextarea required="true" cols="40" rows="10" />
+								<h:outputLabel value="Diagnostico:" />
+								<h:inputTextarea required="true" cols="40" rows="10" />
+								<h:outputLabel value="ADICAP:" />
+								<h:selectOneListbox>
+									<f:selectItems />
+								</h:selectOneListbox>
+								<h:outputLabel value="Fecha de lectura:" />
+								<r:calendar />
 							</h:panelGrid>
-						</fieldset>
-					</div>
+						</r:tab>
+
+						<r:tab header="Imagenes">
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Imagenes:" />
+								<r:fileUpload />
+							</h:panelGrid>
+						</r:tab>
+					</r:tabPanel>
 
 				</r:region>
 			</r:outputPanel>
