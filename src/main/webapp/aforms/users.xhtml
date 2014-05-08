@@ -10,69 +10,71 @@
 		<h:form id="mainForm" prependId="false">
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
-				
-					<h3>Users</h3>
-					<r:tabPanel switchType="ajax">
-						<r:repeat value="#{viewUsers.userStartLetters}" var="letter">
-							<r:tab header="#{letter.toUpperCase()}" switchType="ajax">
-								<r:dataTable value="#{viewUsers.getUsersForLetter(letter)}" var="u" rowKeyVar="rowNum">
-									<r:column>
-										<f:facet name="header">#</f:facet>
-										<h:outputText value="#{rowNum+1}." />
-									</r:column>
-									<r:column style="text-align:center;">
-										<f:facet name="header">Username</f:facet>
-										<h:outputText value="#{u.username}" />
-									</r:column>
-									<r:column>
-										<f:facet name="header">Name</f:facet>
-										<h:outputText value="#{u.name}" />
-									</r:column>
-									<r:column style="text-align:center;">
-										<f:facet name="header">Last login</f:facet>
-										<h:outputText value="#{u.lastLogin}">
-											<f:converter binding="#{converterForDate}" />
-										</h:outputText>
-									</r:column>
-									<r:column style="text-align:center;">
-										<f:facet name="header">Last logout</f:facet>
-										<h:outputText value="#{u.lastLogout}">
-											<f:converter binding="#{converterForDate}" />
-										</h:outputText>
-									</r:column>
-									<r:column style="text-align:center;">
-										<f:facet name="header">Active</f:facet>
-										<h:selectBooleanCheckbox value="#{u.active}" disabled="true" />
-									</r:column>
-									<r:column style="text-align:center;">
-										<f:facet name="header">MCP</f:facet>
-										<h:selectBooleanCheckbox value="#{u.mustChangePassword}" disabled="true" />
-									</r:column>
-									<r:column>
-										<f:facet name="header">.</f:facet>
-										<r:commandLink>
-											<h:graphicImage library="images/icons" name="edit.png" alt="Edit" />
-											<r:ajax event="click" execute="@this" listener="#{viewUsers.load(u.id)}"
-												oncomplete="#{r:component('popup')}.show();" />
-										</r:commandLink>
+
+					<h3 class="centered">Users</h3>
+					<div class="centered" style="width: 600px;">
+						<r:tabPanel switchType="ajax">
+							<r:repeat value="#{viewUsers.userStartLetters}" var="letter">
+								<r:tab header="#{letter.toUpperCase()}" switchType="ajax">
+									<r:dataTable value="#{viewUsers.getUsersForLetter(letter)}" var="u" rowKeyVar="rowNum">
+										<r:column>
+											<f:facet name="header">#</f:facet>
+											<h:outputText value="#{rowNum+1}." />
+										</r:column>
+										<r:column style="text-align:center;">
+											<f:facet name="header">Username</f:facet>
+											<h:outputText value="#{u.username}" />
+										</r:column>
+										<r:column>
+											<f:facet name="header">Name</f:facet>
+											<h:outputText value="#{u.name}" />
+										</r:column>
+										<r:column style="text-align:center;">
+											<f:facet name="header">Last login</f:facet>
+											<h:outputText value="#{u.lastLogin}">
+												<f:converter binding="#{converterForDate}" />
+											</h:outputText>
+										</r:column>
+										<r:column style="text-align:center;">
+											<f:facet name="header">Last logout</f:facet>
+											<h:outputText value="#{u.lastLogout}">
+												<f:converter binding="#{converterForDate}" />
+											</h:outputText>
+										</r:column>
+										<r:column style="text-align:center;">
+											<f:facet name="header">Active</f:facet>
+											<h:selectBooleanCheckbox value="#{u.active}" disabled="true" />
+										</r:column>
+										<r:column style="text-align:center;">
+											<f:facet name="header">MCP</f:facet>
+											<h:selectBooleanCheckbox value="#{u.mustChangePassword}" disabled="true" />
+										</r:column>
+										<r:column>
+											<f:facet name="header">.</f:facet>
+											<r:commandLink>
+												<h:graphicImage library="images/icons" name="edit.png" alt="Edit" />
+												<r:ajax event="click" execute="@this" listener="#{viewUsers.load(u.id)}"
+													oncomplete="#{r:component('popup')}.show();" />
+											</r:commandLink>
 										&nbsp;
 										<r:commandLink actionListener="#{viewUsers.remove(u.id)}" execute="@this">
-											<h:graphicImage library="images/icons" name="remove.png" alt="Delete" />
-										</r:commandLink>
+												<h:graphicImage library="images/icons" name="remove.png" alt="Delete" />
+											</r:commandLink>
 										&nbsp;
 										<r:commandLink actionListener="#{appSession.impersonate(u.id)}" execute="@this"
-											rendered="#{appSession.systemUser.activeRole == 'sadmin'}">
-											<h:graphicImage library="images/icons" name="man.png" alt="Impersonate" />
-										</r:commandLink>
+												rendered="#{appSession.systemUser.activeRole == 'sadmin'}">
+												<h:graphicImage library="images/icons" name="man.png" alt="Impersonate" />
+											</r:commandLink>
 										&nbsp;
 										<r:commandLink actionListener="#{loginManager.resetPassword(u.id)}" execute="@this">
-											<h:graphicImage library="images/icons" name="lock.png" alt="Reset password" />
-										</r:commandLink>
-									</r:column>
-								</r:dataTable>
-							</r:tab>
-						</r:repeat>
-					</r:tabPanel>
+												<h:graphicImage library="images/icons" name="lock.png" alt="Reset password" />
+											</r:commandLink>
+										</r:column>
+									</r:dataTable>
+								</r:tab>
+							</r:repeat>
+						</r:tabPanel>
+					</div>
 					
 				</r:region>
 			</r:outputPanel>
@@ -82,7 +84,7 @@
 			<h:form id="uForm">
 				<r:outputPanel ajaxRendered="true">
 					<r:region>
-					
+
 						<fieldset>
 							<legend>User form:</legend>
 							<h:panelGrid columns="2">
@@ -114,12 +116,12 @@
 								</r:commandButton>
 							</div>
 						</fieldset>
-						
+
 					</r:region>
 				</r:outputPanel>
 			</h:form>
 		</r:popupPanel>
-		
+
 	</ui:define>
 </ui:composition>
 </html>

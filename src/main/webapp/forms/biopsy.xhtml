@@ -9,8 +9,8 @@
 		<h:form id="mainForm" prependId="false">
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
-				
-					<h3>Biopsia</h3>
+
+					<h3 class="centered">Biopsia</h3>
 					<div class="centered" style="width: 600px;">
 						<r:tabPanel switchType="client">
 							<r:tab header="Generalidades">
@@ -70,6 +70,12 @@
 								<h:outputLabel value="Imagenes:" />
 								<r:fileUpload listHeight="0" />
 							</r:tab>
+
+							<hr />
+							<div style="text-align: center;">
+								<h:commandButton value="Save" />
+								<h:commandButton value="Cancel" immediate="true" />
+							</div>
 						</r:tabPanel>
 					</div>
 
