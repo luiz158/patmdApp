@@ -4,11 +4,13 @@
 
 <ui:composition template="/templates/main.xhtml">
 	<ui:define name="content">
+	
 		#{appSession.checkRole('sadmin')}
 		<r:notifyMessages stayTime="2000" />
 		<h:form id="mainForm" prependId="false">
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
+				
 					<h3>Users</h3>
 					<r:tabPanel switchType="ajax">
 						<r:repeat value="#{viewUsers.userStartLetters}" var="letter">
@@ -71,6 +73,7 @@
 							</r:tab>
 						</r:repeat>
 					</r:tabPanel>
+					
 				</r:region>
 			</r:outputPanel>
 		</h:form>
@@ -79,6 +82,7 @@
 			<h:form id="uForm">
 				<r:outputPanel ajaxRendered="true">
 					<r:region>
+					
 						<fieldset>
 							<legend>User form:</legend>
 							<h:panelGrid columns="2">
@@ -110,10 +114,12 @@
 								</r:commandButton>
 							</div>
 						</fieldset>
+						
 					</r:region>
 				</r:outputPanel>
 			</h:form>
 		</r:popupPanel>
+		
 	</ui:define>
 </ui:composition>
 </html>

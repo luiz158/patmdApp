@@ -4,11 +4,13 @@
 
 <ui:composition template="/templates/main.xhtml">
 	<ui:define name="content">
+
 		<r:notifyMessages stayTime="2000" />
 		<h:form id="mainForm" prependId="false">
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
+					<h3>Busqueda</h3>
 					<div class="centered" style="width: 400px;">
 						<fieldset>
 							<legend>Filtros:</legend>
@@ -33,24 +35,26 @@
 					</div>
 					<br />
 
-					<r:dataTable value="#{biopsies}" var="b" rowKeyVar="rowNum" styleClass="centered">
-						<r:column>
-							<f:facet name="header">#</f:facet>
-							<h:outputText value="#{rowNum+1}." />
-						</r:column>
-						<r:column>
-							<f:facet name="header">F. Entrada</f:facet>
-							<h:outputText value="#{b.pacient.fullName}" />
-						</r:column>
-						<r:column>
-							<f:facet name="header">Paciente</f:facet>
-							<h:outputText value="#{b.pacient.fullName}" />
-						</r:column>
-						<r:column>
-							<f:facet name="header">Doctor</f:facet>
-							<h:outputText value="#{b.doctor.fullName}" />
-						</r:column>
-					</r:dataTable>
+					<div class="centered" style="width: 800px;">
+						<r:dataTable value="#{biopsies}" var="b" rowKeyVar="rowNum" styleClass="centered">
+							<r:column>
+								<f:facet name="header">#</f:facet>
+								<h:outputText value="#{rowNum+1}." />
+							</r:column>
+							<r:column>
+								<f:facet name="header">F. Entrada</f:facet>
+								<h:outputText value="#{b.pacient.fullName}" />
+							</r:column>
+							<r:column>
+								<f:facet name="header">Paciente</f:facet>
+								<h:outputText value="#{b.pacient.fullName}" />
+							</r:column>
+							<r:column>
+								<f:facet name="header">Doctor</f:facet>
+								<h:outputText value="#{b.doctor.fullName}" />
+							</r:column>
+						</r:dataTable>
+					</div>
 
 				</r:region>
 			</r:outputPanel>

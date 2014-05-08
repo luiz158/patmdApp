@@ -4,12 +4,14 @@
 
 <ui:composition template="/templates/main.xhtml">
 	<ui:define name="content">
+
 		<r:notifyMessages stayTime="2000" />
 		<h:form id="mainForm" prependId="false">
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<div class="centered">
+					<h3>Biopsias</h3>
+					<div class="centered" style="width: 800px;">
 						<r:dataTable value="#{biopsies}" var="b" rowKeyVar="rowNum" styleClass="centered">
 							<r:column>
 								<f:facet name="header">#</f:facet>

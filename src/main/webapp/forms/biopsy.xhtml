@@ -4,23 +4,25 @@
 
 <ui:composition template="/templates/main.xhtml">
 	<ui:define name="content">
+
 		<r:notifyMessages stayTime="2000" />
 		<h:form id="mainForm" prependId="false">
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
-
+				
+					<h3>Biopsia</h3>
 					<div class="centered" style="width: 600px;">
 						<r:tabPanel switchType="client">
 							<r:tab header="Generalidades">
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Biopsia:" />
-									<h:inputText size="40" required="true" />
+									<h:inputText size="80" required="true" />
 									<h:outputLabel value="Fecha de entrada:" />
 									<r:calendar />
 									<h:outputLabel value="Paciente:" />
-									<h:inputText size="40" required="true" />
+									<h:inputText size="80" required="true" />
 									<h:outputLabel value="Edad:" />
-									<h:inputText size="40" required="true" />
+									<h:inputText size="80" required="true" />
 									<h:outputLabel value="Sexo:" />
 									<h:selectOneRadio>
 										<f:selectItems />
@@ -30,18 +32,18 @@
 										<f:selectItems />
 									</h:selectOneListbox>
 									<h:outputLabel value="Diagnostico clinico:" />
-									<h:inputTextarea required="true" cols="40" rows="10" />
+									<h:inputTextarea required="true" cols="80" rows="15" />
 								</h:panelGrid>
 							</r:tab>
 
 							<r:tab header="Examenes">
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Examen macroscopico:" />
-									<h:inputTextarea required="true" cols="40" rows="10" />
+									<h:inputTextarea required="true" cols="80" rows="15" />
 									<h:outputLabel value="Examen microscopico:" />
-									<h:inputTextarea required="true" cols="40" rows="10" />
+									<h:inputTextarea required="true" cols="80" rows="15" />
 									<h:outputLabel value="Diagnostico:" />
-									<h:inputTextarea required="true" cols="40" rows="10" />
+									<h:inputTextarea required="true" cols="80" rows="15" />
 									<h:outputLabel value="ADICAP:" />
 									<h:selectOneListbox>
 										<f:selectItems />
@@ -52,10 +54,21 @@
 							</r:tab>
 
 							<r:tab header="Imagenes">
-								<h:panelGrid columns="2">
-									<h:outputLabel value="Imagenes:" />
-									<r:fileUpload />
-								</h:panelGrid>
+								<r:dataGrid columns="3" var="f" rowKeyVar="rowNum">
+									<h:panelGrid columns="2">
+										<r:mediaOutput element="img" mimeType="image/jpeg" />
+										<h:panelGrid columns="2">
+											<h:outputText value="Archivo:" />
+											<h:outputText value="#{f.name}" />
+											<h:outputText value="Tamaño:" />
+											<h:outputText value="#{f.length}" />
+										</h:panelGrid>
+									</h:panelGrid>
+								</r:dataGrid>
+								<br />
+
+								<h:outputLabel value="Imagenes:" />
+								<r:fileUpload listHeight="0" />
 							</r:tab>
 						</r:tabPanel>
 					</div>
