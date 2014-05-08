@@ -60,7 +60,7 @@
 										&nbsp;
 										<r:commandLink actionListener="#{appSession.impersonate(u.id)}" execute="@this"
 											rendered="#{appSession.systemUser.activeRole == 'sadmin'}">
-											<h:graphicImage library="images/icons" name="impers.png" alt="Impersonate" />
+											<h:graphicImage library="images/icons" name="man.png" alt="Impersonate" />
 										</r:commandLink>
 										&nbsp;
 										<r:commandLink actionListener="#{loginManager.resetPassword(u.id)}" execute="@this">
@@ -93,9 +93,9 @@
 								<h:outputLabel value="Role:" />
 								<h:selectOneMenu value="#{managedUser.activeRole}" required="true">
 									<f:selectItem itemLabel="---" itemValue="---" noSelectionOption="true" />
-									<f:selectItem itemLabel="Admin" itemValue="admin" />
+									<f:selectItem itemLabel="Pathologist" itemValue="patho" />
 									<f:selectItem itemLabel="System Admin" itemValue="sadmin" />
-									<f:selectItem itemLabel="User" itemValue="user" />
+									<f:selectItem itemLabel="Doctor" itemValue="doctor" />
 								</h:selectOneMenu>
 							</h:panelGrid>
 							<hr />
