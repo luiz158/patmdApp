@@ -9,7 +9,7 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<r:dataTable value="#{doctors}" var="d" rowKeyVar="rowNum" styleClass="centered">
+					<r:dataTable value="#{doctors}" var="d" rowKeyVar="rowNum">
 						<r:column>
 							<f:facet name="header">#</f:facet>
 							<h:outputText value="#{rowNum+1}." />
