@@ -50,6 +50,14 @@ public class ViewDoctors implements Serializable {
 		managedDoctor = em.find(Doctor.class, id);
 	}
 
+	public void newInstance() {
+		managedDoctor = new Doctor();
+	}
+
+	public void refresh() {
+		managedDoctor = null;
+	}
+
 	public void remove(Long id) throws Exception {
 		Doctor doctor = em.find(Doctor.class, id);
 		bk.remove(doctor);

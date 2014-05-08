@@ -11,7 +11,7 @@ import com.bitjester.apps.md.entities.enums.EnumSex;
 
 @Entity
 @Table(name = "pacients")
-public class Pacient extends BaseEntity {
+public class Patient extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	@OneToOne

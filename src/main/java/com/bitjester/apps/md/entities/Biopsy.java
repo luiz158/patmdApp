@@ -46,7 +46,7 @@ public class Biopsy extends BaseEntity {
 	// @JoinColumn(name="doctor")
 	private Doctor doctor;
 	@OneToOne(mappedBy = "biopsy", cascade = CascadeType.ALL)
-	private Pacient pacient;
+	private Patient pacient;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "biopsy", orphanRemoval = true)
 	@OrderColumn(name = "index")
@@ -57,7 +57,7 @@ public class Biopsy extends BaseEntity {
 	public Biopsy() {
 		super();
 		examDate = new Date();
-		pacient = new Pacient();
+		pacient = new Patient();
 		images = new ArrayList<Image>(0);
 
 	}
@@ -142,11 +142,11 @@ public class Biopsy extends BaseEntity {
 		this.doctor = doctor;
 	}
 
-	public Pacient getPacient() {
+	public Patient getPacient() {
 		return pacient;
 	}
 
-	public void setPacient(Pacient pacient) {
+	public void setPacient(Patient pacient) {
 		this.pacient = pacient;
 	}
 
