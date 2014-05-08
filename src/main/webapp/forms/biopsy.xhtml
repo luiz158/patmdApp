@@ -4,7 +4,6 @@
 
 <ui:composition template="/templates/main.xhtml">
 	<ui:define name="content">
-		<!-- #{appSession.checkRole('patho')} -->
 		<r:notifyMessages stayTime="2000" />
 		<h:form id="mainForm" prependId="false">
 			<r:outputPanel ajaxRendered="true">
@@ -13,13 +12,13 @@
 						<legend>Generalidades:</legend>
 						<h:panelGrid columns="2">
 							<h:outputLabel value="Biopsia:" />
-							<h:inputText size="40" value="#{}" required="true" />
+							<h:inputText size="40" required="true" />
 							<h:outputLabel value="Fecha de entrada:" />
 							<r:calendar />
 							<h:outputLabel value="Paciente:" />
-							<h:inputText size="40" value="#{}" required="true" />
+							<h:inputText size="40" required="true" />
 							<h:outputLabel value="Edad:" />
-							<h:inputText size="40" value="#{}" required="true" />
+							<h:inputText size="40" required="true" />
 							<h:outputLabel value="Sexo:" />
 							<h:selectOneRadio>
 								<f:selectItems />
@@ -29,22 +28,22 @@
 								<f:selectItems />
 							</h:selectOneListbox>
 							<h:outputLabel value="Diagnostico clinico:" />
-							<h:inputTextarea value="#{}" required="true" />
+							<h:inputTextarea required="true" />
 						</h:panelGrid>
 					</fieldset>
 					<br />
-					
+
 					<fieldset>
 						<legend>Examenes:</legend>
 						<h:panelGrid columns="2">
 							<h:panelGrid columns="1">
 								<!-- Exam results -->
 								<h:outputLabel value="Examen macroscopico:" />
-								<h:inputTextarea value="#{}" required="true" />
+								<h:inputTextarea required="true" />
 								<h:outputLabel value="Examen microscopico:" />
-								<h:inputTextarea value="#{}" required="true" />
+								<h:inputTextarea required="true" />
 								<h:outputLabel value="Diagnostico:" />
-								<h:inputTextarea value="#{}" required="true" />
+								<h:inputTextarea required="true" />
 								<h:outputLabel value="ADICAP:" />
 								<h:selectOneListbox>
 									<f:selectItems />
