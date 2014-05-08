@@ -32,24 +32,24 @@
 										<f:selectItems />
 									</h:selectOneListbox>
 									<h:outputLabel value="Diagnostico clinico:" />
-									<h:inputTextarea required="true" cols="80" rows="15" />
+									<h:inputTextarea required="true" cols="80" rows="10" />
 								</h:panelGrid>
 							</r:tab>
 
 							<r:tab header="Examenes">
 								<h:panelGrid columns="2">
+									<h:outputLabel value="Fecha de lectura:" />
+									<r:calendar />
 									<h:outputLabel value="Examen macroscopico:" />
-									<h:inputTextarea required="true" cols="80" rows="15" />
+									<h:inputTextarea required="true" cols="80" rows="10" />
 									<h:outputLabel value="Examen microscopico:" />
-									<h:inputTextarea required="true" cols="80" rows="15" />
-									<h:outputLabel value="Diagnostico:" />
-									<h:inputTextarea required="true" cols="80" rows="15" />
+									<h:inputTextarea required="true" cols="80" rows="10" />
 									<h:outputLabel value="ADICAP:" />
 									<h:selectOneListbox>
 										<f:selectItems />
 									</h:selectOneListbox>
-									<h:outputLabel value="Fecha de lectura:" />
-									<r:calendar />
+									<h:outputLabel value="Diagnostico:" />
+									<h:inputTextarea required="true" cols="80" rows="10" />
 								</h:panelGrid>
 							</r:tab>
 
@@ -68,7 +68,7 @@
 								<br />
 
 								<h:outputLabel value="Imagenes:" />
-								<r:fileUpload listHeight="0" />
+								<r:fileUpload listHeight="0" styleClass="centered"/>
 							</r:tab>
 
 							<hr />

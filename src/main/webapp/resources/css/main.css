@@ -11,4 +11,11 @@ p {
 .centered {
 	display: block;
 	margin: 0px auto;
+	text-align: center;
+}
+
+.tcentered {
+	display: block;
+	margin: 0px auto;
+	text-align: center;
 }
