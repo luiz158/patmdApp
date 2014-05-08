@@ -30,24 +30,24 @@
 									<f:selectItems />
 								</h:selectOneListbox>
 								<h:outputLabel value="Diagnostico clinico:" />
-								<h:inputTextarea required="true" />
+								<h:inputTextarea required="true" cols="40" rows="10" />
 							</h:panelGrid>
 						</fieldset>
 					</div>
 					<br />
-					
-					<div class="centered" style="width: 600px;">
+
+					<div class="centered" style="width: 800px;">
 						<fieldset>
 							<legend>Examenes:</legend>
 							<h:panelGrid columns="2">
-								<h:panelGrid columns="1">
+								<h:panelGrid columns="1" width="400px">
 									<!-- Exam results -->
 									<h:outputLabel value="Examen macroscopico:" />
-									<h:inputTextarea required="true" />
+									<h:inputTextarea required="true" cols="40" rows="10" />
 									<h:outputLabel value="Examen microscopico:" />
-									<h:inputTextarea required="true" />
+									<h:inputTextarea required="true" cols="40" rows="10" />
 									<h:outputLabel value="Diagnostico:" />
-									<h:inputTextarea required="true" />
+									<h:inputTextarea required="true" cols="40" rows="10" />
 									<h:outputLabel value="ADICAP:" />
 									<h:selectOneListbox>
 										<f:selectItems />
@@ -55,7 +55,7 @@
 									<h:outputLabel value="Fecha de lectura:" />
 									<r:calendar />
 								</h:panelGrid>
-								<h:panelGrid columns="1">
+								<h:panelGrid columns="1" width="400px">
 									<!-- Exam images -->
 									<h:outputLabel value="Imagenes:" />
 									<r:fileUpload />
