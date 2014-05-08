@@ -9,54 +9,56 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<r:tabPanel switchType="client" styleClass="centered" style="width: 400px;">
-						<r:tab header="Generalidades">
-							<h:panelGrid columns="2">
-								<h:outputLabel value="Biopsia:" />
-								<h:inputText size="40" required="true" />
-								<h:outputLabel value="Fecha de entrada:" />
-								<r:calendar />
-								<h:outputLabel value="Paciente:" />
-								<h:inputText size="40" required="true" />
-								<h:outputLabel value="Edad:" />
-								<h:inputText size="40" required="true" />
-								<h:outputLabel value="Sexo:" />
-								<h:selectOneRadio>
-									<f:selectItems />
-								</h:selectOneRadio>
-								<h:outputLabel value="Medico:" />
-								<h:selectOneListbox>
-									<f:selectItems />
-								</h:selectOneListbox>
-								<h:outputLabel value="Diagnostico clinico:" />
-								<h:inputTextarea required="true" cols="40" rows="10" />
-							</h:panelGrid>
-						</r:tab>
+					<div class="centered" style="width: 600px;">
+						<r:tabPanel switchType="client">
+							<r:tab header="Generalidades">
+								<h:panelGrid columns="2">
+									<h:outputLabel value="Biopsia:" />
+									<h:inputText size="40" required="true" />
+									<h:outputLabel value="Fecha de entrada:" />
+									<r:calendar />
+									<h:outputLabel value="Paciente:" />
+									<h:inputText size="40" required="true" />
+									<h:outputLabel value="Edad:" />
+									<h:inputText size="40" required="true" />
+									<h:outputLabel value="Sexo:" />
+									<h:selectOneRadio>
+										<f:selectItems />
+									</h:selectOneRadio>
+									<h:outputLabel value="Medico:" />
+									<h:selectOneListbox>
+										<f:selectItems />
+									</h:selectOneListbox>
+									<h:outputLabel value="Diagnostico clinico:" />
+									<h:inputTextarea required="true" cols="40" rows="10" />
+								</h:panelGrid>
+							</r:tab>
 
-						<r:tab header="Examenes">
-							<h:panelGrid columns="2">
-								<h:outputLabel value="Examen macroscopico:" />
-								<h:inputTextarea required="true" cols="40" rows="10" />
-								<h:outputLabel value="Examen microscopico:" />
-								<h:inputTextarea required="true" cols="40" rows="10" />
-								<h:outputLabel value="Diagnostico:" />
-								<h:inputTextarea required="true" cols="40" rows="10" />
-								<h:outputLabel value="ADICAP:" />
-								<h:selectOneListbox>
-									<f:selectItems />
-								</h:selectOneListbox>
-								<h:outputLabel value="Fecha de lectura:" />
-								<r:calendar />
-							</h:panelGrid>
-						</r:tab>
+							<r:tab header="Examenes">
+								<h:panelGrid columns="2">
+									<h:outputLabel value="Examen macroscopico:" />
+									<h:inputTextarea required="true" cols="40" rows="10" />
+									<h:outputLabel value="Examen microscopico:" />
+									<h:inputTextarea required="true" cols="40" rows="10" />
+									<h:outputLabel value="Diagnostico:" />
+									<h:inputTextarea required="true" cols="40" rows="10" />
+									<h:outputLabel value="ADICAP:" />
+									<h:selectOneListbox>
+										<f:selectItems />
+									</h:selectOneListbox>
+									<h:outputLabel value="Fecha de lectura:" />
+									<r:calendar />
+								</h:panelGrid>
+							</r:tab>
 
-						<r:tab header="Imagenes">
-							<h:panelGrid columns="2">
-								<h:outputLabel value="Imagenes:" />
-								<r:fileUpload />
-							</h:panelGrid>
-						</r:tab>
-					</r:tabPanel>
+							<r:tab header="Imagenes">
+								<h:panelGrid columns="2">
+									<h:outputLabel value="Imagenes:" />
+									<r:fileUpload />
+								</h:panelGrid>
+							</r:tab>
+						</r:tabPanel>
+					</div>
 
 				</r:region>
 			</r:outputPanel>
