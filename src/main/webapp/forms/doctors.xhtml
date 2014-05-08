@@ -9,10 +9,17 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<r:dataTable>
-						<r:column></r:column>
+					<r:dataTable value="#{doctors}" var="d" rowKeyVar="rowNum">
+						<r:column>
+							<f:facet name="header">#</f:facet>
+							<h:outputText value="#{rowNum+1}." />
+						</r:column>
+						<r:column>
+							<f:facet name="header">Nombre</f:facet>
+							<h:outputText value="#{d.fullName}" />
+						</r:column>
 					</r:dataTable>
-
+					
 				</r:region>
 			</r:outputPanel>
 		</h:form>

@@ -9,14 +9,28 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<fieldset>
-						<legend>Filtros:</legend>
-						<h:panelGrid columns="2">
-						</h:panelGrid>
-						<div style="text-align: center;">
-							<h:commandButton value="Filtrar" />
-						</div>
-					</fieldset>
+					<div class="centered" style="width: 400px;">
+						<fieldset>
+							<legend>Filtros:</legend>
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Medico:" />
+								<h:selectOneListbox>
+									<f:selectItems />
+								</h:selectOneListbox>
+								<h:outputLabel value="ADICAP:" />
+								<h:selectOneListbox>
+									<f:selectItems />
+								</h:selectOneListbox>
+								<h:outputLabel value="Fecha de entrada:" />
+								<r:calendar />
+								<h:outputLabel value="Fecha de lectura:" />
+								<r:calendar />
+							</h:panelGrid>
+							<div style="text-align: center;">
+								<h:commandButton value="Filtrar" />
+							</div>
+						</fieldset>
+					</div>
 					<br />
 
 					<r:dataTable>

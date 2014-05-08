@@ -8,58 +8,61 @@
 		<h:form id="mainForm" prependId="false">
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
-					<fieldset>
-						<legend>Generalidades:</legend>
-						<h:panelGrid columns="2">
-							<h:outputLabel value="Biopsia:" />
-							<h:inputText size="40" required="true" />
-							<h:outputLabel value="Fecha de entrada:" />
-							<r:calendar />
-							<h:outputLabel value="Paciente:" />
-							<h:inputText size="40" required="true" />
-							<h:outputLabel value="Edad:" />
-							<h:inputText size="40" required="true" />
-							<h:outputLabel value="Sexo:" />
-							<h:selectOneRadio>
-								<f:selectItems />
-							</h:selectOneRadio>
-							<h:outputLabel value="Medico:" />
-							<h:selectOneListbox>
-								<f:selectItems />
-							</h:selectOneListbox>
-							<h:outputLabel value="Diagnostico clinico:" />
-							<h:inputTextarea required="true" />
-						</h:panelGrid>
-					</fieldset>
-					<br />
 
-					<fieldset>
-						<legend>Examenes:</legend>
-						<h:panelGrid columns="2">
-							<h:panelGrid columns="1">
-								<!-- Exam results -->
-								<h:outputLabel value="Examen macroscopico:" />
-								<h:inputTextarea required="true" />
-								<h:outputLabel value="Examen microscopico:" />
-								<h:inputTextarea required="true" />
-								<h:outputLabel value="Diagnostico:" />
-								<h:inputTextarea required="true" />
-								<h:outputLabel value="ADICAP:" />
+					<div class="centered" style="width: 400px;">
+						<fieldset>
+							<legend>Generalidades:</legend>
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Biopsia:" />
+								<h:inputText size="40" required="true" />
+								<h:outputLabel value="Fecha de entrada:" />
+								<r:calendar />
+								<h:outputLabel value="Paciente:" />
+								<h:inputText size="40" required="true" />
+								<h:outputLabel value="Edad:" />
+								<h:inputText size="40" required="true" />
+								<h:outputLabel value="Sexo:" />
+								<h:selectOneRadio>
+									<f:selectItems />
+								</h:selectOneRadio>
+								<h:outputLabel value="Medico:" />
 								<h:selectOneListbox>
 									<f:selectItems />
 								</h:selectOneListbox>
-								<h:outputLabel value="Fecha de lectura:" />
-								<r:calendar />
+								<h:outputLabel value="Diagnostico clinico:" />
+								<h:inputTextarea required="true" />
 							</h:panelGrid>
-							<h:panelGrid columns="1">
-								<!-- Exam images -->
-								<h:outputLabel value="Imagenes:" />
-								<r:fileUpload />
-							</h:panelGrid>
-						</h:panelGrid>
-					</fieldset>
+						</fieldset>
+					</div>
 					<br />
-
+					
+					<div class="centered" style="width: 600px;">
+						<fieldset>
+							<legend>Examenes:</legend>
+							<h:panelGrid columns="2">
+								<h:panelGrid columns="1">
+									<!-- Exam results -->
+									<h:outputLabel value="Examen macroscopico:" />
+									<h:inputTextarea required="true" />
+									<h:outputLabel value="Examen microscopico:" />
+									<h:inputTextarea required="true" />
+									<h:outputLabel value="Diagnostico:" />
+									<h:inputTextarea required="true" />
+									<h:outputLabel value="ADICAP:" />
+									<h:selectOneListbox>
+										<f:selectItems />
+									</h:selectOneListbox>
+									<h:outputLabel value="Fecha de lectura:" />
+									<r:calendar />
+								</h:panelGrid>
+								<h:panelGrid columns="1">
+									<!-- Exam images -->
+									<h:outputLabel value="Imagenes:" />
+									<r:fileUpload />
+								</h:panelGrid>
+							</h:panelGrid>
+						</fieldset>
+					</div>
 
 				</r:region>
 			</r:outputPanel>
