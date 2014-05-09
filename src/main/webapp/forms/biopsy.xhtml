@@ -11,71 +11,71 @@
 				<r:region>
 
 					<h3 class="tcentered">Biopsia</h3>
-						<r:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
-							<r:tab header="Generalidades">
-								<h:panelGrid columns="2">
-									<h:outputLabel value="Biopsia:" />
-									<h:inputText size="130" required="true" />
-									<h:outputLabel value="Fecha de entrada:" />
-									<r:calendar />
-									<h:outputLabel value="Paciente:" />
-									<h:inputText size="130" required="true" />
-									<h:outputLabel value="Edad:" />
-									<h:inputText size="130" required="true" />
-									<h:outputLabel value="Sexo:" />
-									<h:selectOneRadio>
-										<f:selectItems />
-									</h:selectOneRadio>
-									<h:outputLabel value="Medico:" />
-									<h:selectOneListbox>
-										<f:selectItems />
-									</h:selectOneListbox>
-									<h:outputLabel value="Diagnostico clinico:" />
-									<h:inputTextarea required="true" cols="130" rows="12" />
-								</h:panelGrid>
-							</r:tab>
+					<r:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
+						<r:tab header="Generalidades">
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Biopsia:" />
+								<h:inputText size="130" required="true" />
+								<h:outputLabel value="Fecha de entrada:" />
+								<r:calendar />
+								<h:outputLabel value="Paciente:" />
+								<h:inputText size="130" required="true" />
+								<h:outputLabel value="Edad:" />
+								<r:inputNumberSpinner required="true" />
+								<h:outputLabel value="Sexo:" />
+								<h:selectOneRadio>
+									<f:selectItem itemLabel="F" value="FEMALE" />
+									<f:selectItem itemLabel="M" value="MALE" />
+								</h:selectOneRadio>
+								<h:outputLabel value="Medico:" />
+								<h:selectOneListbox>
+									<f:selectItems />
+								</h:selectOneListbox>
+								<h:outputLabel value="Diagnostico clinico:" />
+								<h:inputTextarea required="true" cols="130" rows="12" />
+							</h:panelGrid>
+						</r:tab>
 
-							<r:tab header="Examenes">
-								<h:panelGrid columns="2">
-									<h:outputLabel value="Fecha de lectura:" />
-									<r:calendar />
-									<h:outputLabel value="Examen macroscopico:" />
-									<h:inputTextarea required="true" cols="130" rows="12" />
-									<h:outputLabel value="Examen microscopico:" />
-									<h:inputTextarea required="true" cols="130" rows="12" />
-									<h:outputLabel value="ADICAP:" />
-									<h:selectOneListbox>
-										<f:selectItems />
-									</h:selectOneListbox>
-									<h:outputLabel value="Diagnostico:" />
-									<h:inputTextarea required="true" cols="130" rows="12" />
-								</h:panelGrid>
-							</r:tab>
+						<r:tab header="Examenes">
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Fecha de lectura:" />
+								<r:calendar />
+								<h:outputLabel value="Examen macroscopico:" />
+								<h:inputTextarea required="true" cols="130" rows="12" />
+								<h:outputLabel value="Examen microscopico:" />
+								<h:inputTextarea required="true" cols="130" rows="12" />
+								<h:outputLabel value="ADICAP:" />
+								<h:selectOneListbox>
+									<f:selectItems />
+								</h:selectOneListbox>
+								<h:outputLabel value="Diagnostico:" />
+								<h:inputTextarea required="true" cols="130" rows="12" />
+							</h:panelGrid>
+						</r:tab>
 
-							<r:tab header="Imagenes">
-								<r:dataGrid columns="4" var="f" rowKeyVar="rowNum">
+						<r:tab header="Imagenes">
+							<r:dataGrid columns="4" var="f" rowKeyVar="rowNum">
+								<h:panelGrid columns="2">
+									<r:mediaOutput element="img" mimeType="image/jpeg" />
 									<h:panelGrid columns="2">
-										<r:mediaOutput element="img" mimeType="image/jpeg" />
-										<h:panelGrid columns="2">
-											<h:outputText value="Archivo:" />
-											<h:outputText value="#{f.name}" />
-											<h:outputText value="Tamaño:" />
-											<h:outputText value="#{f.length}" />
-										</h:panelGrid>
+										<h:outputText value="Archivo:" />
+										<h:outputText value="#{f.name}" />
+										<h:outputText value="Tamaño:" />
+										<h:outputText value="#{f.length}" />
 									</h:panelGrid>
-								</r:dataGrid>
-								<br />
+								</h:panelGrid>
+							</r:dataGrid>
+							<br />
 
-								<h:outputLabel value="Imagenes:" />
-								<r:fileUpload listHeight="0" styleClass="centered" />
-							</r:tab>
+							<r:fileUpload listHeight="0" styleClass="centered" />
+						</r:tab>
 
-							<hr />
-							<div style="text-align: center;">
-								<h:commandButton value="Save" />
-								<h:commandButton value="Cancel" immediate="true" />
-							</div>
-						</r:tabPanel>
+						<hr />
+						<div style="text-align: center;">
+							<h:commandButton value="Save" />
+							<h:commandButton value="Cancel" immediate="true" />
+						</div>
+					</r:tabPanel>
 
 				</r:region>
 			</r:outputPanel>

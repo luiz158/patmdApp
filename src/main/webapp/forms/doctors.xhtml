@@ -24,6 +24,24 @@
 							<f:facet name="header">Especialidad</f:facet>
 							<h:outputText value="#{d.specialty}" />
 						</r:column>
+						<r:column>
+							<f:facet name="header">.</f:facet>
+							<r:commandLink>
+								<h:graphicImage library="images/icons" name="edit.png" alt="Edit" />
+							</r:commandLink>
+							&nbsp;
+							<r:commandLink>
+								<h:graphicImage library="images/icons" name="view.png" alt="Edit" />
+							</r:commandLink>
+							&nbsp;
+							<r:commandLink>
+								<h:graphicImage library="images/icons" name="remove.png" alt="Edit" />
+							</r:commandLink>
+							&nbsp;
+							<r:commandLink>
+								<h:graphicImage library="images/icons" name="lock.png" alt="Edit" />
+							</r:commandLink>
+						</r:column>
 					</r:dataTable>
 
 				</r:region>
