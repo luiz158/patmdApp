@@ -11,34 +11,32 @@
 				<r:region>
 
 					<h3 class="tcentered">Biopsias</h3>
-					<div class="centered" style="width: 800px;">
-						<r:dataTable value="#{biopsies}" var="b" rowKeyVar="rowNum" styleClass="centered">
-							<r:column>
-								<f:facet name="header">#</f:facet>
-								<h:outputText value="#{rowNum+1}." />
-							</r:column>
-							<r:column>
-								<f:facet name="header">F. Entrada</f:facet>
-								<h:outputText value="#{b.pacient.fullName}" />
-							</r:column>
-							<r:column>
-								<f:facet name="header">Paciente</f:facet>
-								<h:outputText value="#{b.pacient.fullName}" />
-							</r:column>
-							<r:column>
-								<f:facet name="header">Doctor</f:facet>
-								<h:outputText value="#{b.doctor.fullName}" />
-							</r:column>
-							<r:column>
-								<f:facet name="header">Ver</f:facet>
-								<h:outputText value="#{b.id}" />
-							</r:column>
-							<r:column>
-								<f:facet name="header">Reporte</f:facet>
-								<h:outputText value="#{b.id}" />
-							</r:column>
-						</r:dataTable>
-					</div>
+					<r:dataTable value="#{biopsies}" var="b" rowKeyVar="rowNum" styleClass="centered" style="width: 800px;">
+						<r:column>
+							<f:facet name="header">#</f:facet>
+							<h:outputText value="#{rowNum+1}." />
+						</r:column>
+						<r:column>
+							<f:facet name="header">F. Entrada</f:facet>
+							<h:outputText value="#{b.pacient.fullName}" />
+						</r:column>
+						<r:column>
+							<f:facet name="header">Paciente</f:facet>
+							<h:outputText value="#{b.pacient.fullName}" />
+						</r:column>
+						<r:column>
+							<f:facet name="header">Doctor</f:facet>
+							<h:outputText value="#{b.doctor.fullName}" />
+						</r:column>
+						<r:column>
+							<f:facet name="header">Ver</f:facet>
+							<h:outputText value="#{b.id}" />
+						</r:column>
+						<r:column>
+							<f:facet name="header">Reporte</f:facet>
+							<h:outputText value="#{b.id}" />
+						</r:column>
+					</r:dataTable>
 
 				</r:region>
 			</r:outputPanel>
