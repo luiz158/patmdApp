@@ -10,24 +10,28 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<h3 class="tcentered">Doctores</h3>
+					<h3 class="tcentered">Pacietes</h3>
 
 					<r:tabPanel styleClass="centered" style="width: 800px;">
-						<r:repeat value="#{doctorStartLetters}" var="letter">
+						<r:repeat value="#{patientStartLetters}" var="letter">
 							<r:tab header="#{letter.toUpperCase()}" switchType="ajax">
-								<r:dataTable value="#{viewDoctors.doctorsForLetter(letter)}" var="d" rowKeyVar="rowNum" styleClass="centered"
+								<r:dataTable value="#{viewPacients.patientsForLetter(letter)}" var="p" rowKeyVar="rowNum" styleClass="centered"
 									style="width: 780px;">
 									<r:column>
 										<f:facet name="header">#</f:facet>
 										<h:outputText value="#{rowNum+1}." />
 									</r:column>
 									<r:column>
-										<f:facet name="header">Nombre</f:facet>
-										<h:outputText value="#{d.fullName}" />
+										<f:facet name="header">Nombres</f:facet>
+										<h:outputText value="#{p.fname}" />
 									</r:column>
 									<r:column>
-										<f:facet name="header">Especialidad</f:facet>
-										<h:outputText value="#{d.specialty}" />
+										<f:facet name="header">Apellidos</f:facet>
+										<h:outputText value="#{p.lname}" />
+									</r:column>
+									<r:column>
+										<f:facet name="header">Edad</f:facet>
+										<h:outputText value="#{p.age}" />
 									</r:column>
 									<r:column>
 										<f:facet name="header">.</f:facet>
@@ -41,10 +45,6 @@
 										&nbsp;
 										<r:commandLink>
 											<h:graphicImage library="images/icons" name="remove.png" alt="Edit" />
-										</r:commandLink>
-										&nbsp;
-										<r:commandLink>
-											<h:graphicImage library="images/icons" name="lock.png" alt="Edit" />
 										</r:commandLink>
 									</r:column>
 								</r:dataTable>

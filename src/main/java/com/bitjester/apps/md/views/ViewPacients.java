@@ -29,14 +29,14 @@ public class ViewPacients implements Serializable {
 	@Named
 	@Produces
 	@RequestScoped
-	public List<String> getPacientStartLetters() throws Exception {
-		String query = "SELECT DISTINCT UPPER(SUBSTRING(p.lname,1,1)) AS letter";
-		query += " FROM Patient p ORDER BY letter";
+	public List<String> getPatientStartLetters() throws Exception {
+		String query = "SELECT DISTINCT SUBSTRING(p.lname,1,1) AS letter FROM Patient";
+		query += " ORDER BY letter";
 		return em.createQuery(query, String.class).getResultList();
 	}
 
-	public List<Patient> getPacients(String letter) {
-		String query = "FROM Patient p WHERE SUBSTRING(p.lname,1,1) ='" + letter + "'";
+	public List<Patient> patientsForLetter(String letter) {
+		String query = "FROM Patient WHERE lname LIKE '" + letter + "%'";
 		query += " ORDER BY p.lname, p.fname";
 		return em.createQuery(query, Patient.class).getResultList();
 	}

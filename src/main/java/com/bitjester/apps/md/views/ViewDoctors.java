@@ -3,6 +3,7 @@ package com.bitjester.apps.md.views;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -31,8 +32,24 @@ public class ViewDoctors implements Serializable {
 
 	@Named
 	@Produces
+	@RequestScoped
+	public List<String> getDoctorStartLetters() throws Exception {
+		String query = "SELECT DISTINCT SUBSTRING(lname,1,1) AS letter FROM Doctor";
+		query += " ORDER BY letter";
+		return em.createQuery(query, String.class).getResultList();
+	}
+
+	@RequestScoped
+	public List<Doctor> doctorsForLetter(String letter) {
+		String query = "FROM Doctor WHERE lname LIKE '" + letter + "%'";
+		query += " ORDER BY lname, fname";
+		return em.createQuery(query, Doctor.class).getResultList();
+	}
+
+	@Named
+	@Produces
 	public List<Doctor> getDoctors() {
-		String query = "FROM Doctor d ORDER BY d.lname, d.fname";
+		String query = "FROM Doctor ORDER BY lname, fname";
 		return em.createQuery(query, Doctor.class).getResultList();
 	}
 

@@ -29,10 +29,14 @@ public class ViewUsers implements Serializable {
 	@Inject
 	private EntityManager em;
 
-	// -- Managed Objects
 	private AppUser managedUser;
 
-	// -- View methods
+	// ================================
+	// ======= Users Methods ==========
+	// ================================
+	
+	@Named
+	@Produces
 	@RequestScoped
 	public List<String> getUserStartLetters() throws Exception {
 		String query = "SELECT DISTINCT SUBSTRING(username,1,1) AS letter FROM AppUser";
@@ -41,7 +45,7 @@ public class ViewUsers implements Serializable {
 	}
 
 	@RequestScoped
-	public List<AppUser> getUsersForLetter(String letter) throws Exception {
+	public List<AppUser> usersForLetter(String letter) throws Exception {
 		String query = "FROM AppUser WHERE username LIKE '" + letter + "%'";
 		query += " ORDER BY username";
 		return em.createQuery(query, AppUser.class).getResultList();

@@ -13,9 +13,10 @@
 
 					<h3 class="tcentered">Users</h3>
 					<r:tabPanel styleClass="centered" style="width: 800px;">
-						<r:repeat value="#{viewUsers.userStartLetters}" var="letter">
+						<r:repeat value="#{userStartLetters}" var="letter">
 							<r:tab header="#{letter.toUpperCase()}" switchType="ajax">
-								<r:dataTable value="#{viewUsers.getUsersForLetter(letter)}" var="u" rowKeyVar="rowNum" styleClass="centered">
+								<r:dataTable value="#{viewUsers.usersForLetter(letter)}" var="u" rowKeyVar="rowNum" styleClass="centered"
+									style="width: 780px;">
 									<r:column>
 										<f:facet name="header">#</f:facet>
 										<h:outputText value="#{rowNum+1}." />
