@@ -12,7 +12,7 @@
 
 					<h3 class="tcentered">Biopsias</h3>
 					<div class="centered" style="width: 800px;">
-						<r:dataTable value="#{biopsies}" var="b" rowKeyVar="rowNum">
+						<r:dataTable value="#{biopsies}" var="b" rowKeyVar="rowNum" styleClass="centered">
 							<r:column>
 								<f:facet name="header">#</f:facet>
 								<h:outputText value="#{rowNum+1}." />

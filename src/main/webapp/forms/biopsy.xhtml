@@ -11,7 +11,7 @@
 				<r:region>
 
 					<h3 class="tcentered">Biopsia</h3>
-					<div class="centered" style="width: 600px;">
+					<div class="centered" style="width: 800px;">
 						<r:tabPanel switchType="client">
 							<r:tab header="Generalidades">
 								<h:panelGrid columns="2">
@@ -32,7 +32,7 @@
 										<f:selectItems />
 									</h:selectOneListbox>
 									<h:outputLabel value="Diagnostico clinico:" />
-									<h:inputTextarea required="true" cols="80" rows="10" />
+									<h:inputTextarea required="true" cols="100" rows="10" />
 								</h:panelGrid>
 							</r:tab>
 
@@ -41,20 +41,20 @@
 									<h:outputLabel value="Fecha de lectura:" />
 									<r:calendar />
 									<h:outputLabel value="Examen macroscopico:" />
-									<h:inputTextarea required="true" cols="80" rows="10" />
+									<h:inputTextarea required="true" cols="100" rows="10" />
 									<h:outputLabel value="Examen microscopico:" />
-									<h:inputTextarea required="true" cols="80" rows="10" />
+									<h:inputTextarea required="true" cols="100" rows="10" />
 									<h:outputLabel value="ADICAP:" />
 									<h:selectOneListbox>
 										<f:selectItems />
 									</h:selectOneListbox>
 									<h:outputLabel value="Diagnostico:" />
-									<h:inputTextarea required="true" cols="80" rows="10" />
+									<h:inputTextarea required="true" cols="100" rows="10" />
 								</h:panelGrid>
 							</r:tab>
 
 							<r:tab header="Imagenes">
-								<r:dataGrid columns="3" var="f" rowKeyVar="rowNum">
+								<r:dataGrid columns="4" var="f" rowKeyVar="rowNum">
 									<h:panelGrid columns="2">
 										<r:mediaOutput element="img" mimeType="image/jpeg" />
 										<h:panelGrid columns="2">
@@ -68,7 +68,7 @@
 								<br />
 
 								<h:outputLabel value="Imagenes:" />
-								<r:fileUpload listHeight="0" styleClass="centered"/>
+								<r:fileUpload listHeight="0" styleClass="centered" />
 							</r:tab>
 
 							<hr />
