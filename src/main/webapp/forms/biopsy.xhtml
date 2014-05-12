@@ -18,21 +18,21 @@
 								<h:inputText size="130" required="true" />
 								<h:outputLabel value="Fecha de entrada:" />
 								<r:calendar />
+								<h:outputLabel value="Paciente" />
 								<h:panelGroup>
 									<fieldset>
-										<legend>Paciente:</legend>
+										<h:outputLabel value="Nombres:" />
+										<h:inputText required="true" />
+										<h:outputLabel value="Apellidos:" />
+										<h:inputText required="true" />
+										<h:outputLabel value="Edad:" />
+										<r:inputNumberSpinner required="true" />
+										<h:outputLabel value="Sexo:" />
+										<h:selectOneRadio required="true">
+											<f:selectItem itemLabel="F" itemValue="FEMALE" />
+											<f:selectItem itemLabel="M" itemValue="MALE" />
+										</h:selectOneRadio>
 									</fieldset>
-									<h:outputLabel value="Nombres:" />
-									<h:inputText required="true" />
-									<h:outputLabel value="Apellidos:" />
-									<h:inputText required="true" />
-									<h:outputLabel value="Edad:" />
-									<r:inputNumberSpinner required="true" />
-									<h:outputLabel value="Sexo:" />
-									<h:selectOneRadio required="true">
-										<f:selectItem itemLabel="F" itemValue="FEMALE" />
-										<f:selectItem itemLabel="M" itemValue="MALE" />
-									</h:selectOneRadio>
 								</h:panelGroup>
 								<h:outputLabel value="Medico:" />
 								<h:selectOneListbox>
