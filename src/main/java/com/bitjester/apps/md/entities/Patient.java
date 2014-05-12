@@ -28,7 +28,6 @@ public class Patient extends BaseEntity {
 	}
 
 	// --- Getters & Setters
-	// --- Accessor methods
 
 	public Biopsy getBiopsy() {
 		return biopsy;

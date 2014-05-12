@@ -26,10 +26,10 @@ import com.bitjester.apps.common.utils.HashUtil;
 public class Biopsy extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
-	private Date reception;
+	private Date receptionDate;
 	private String code;
 	@Column(columnDefinition = "text")
-	private String sample;
+	private String clinical_diag;
 
 	@Column(table = "clinical_data")
 	private Date examDate;
@@ -69,14 +69,13 @@ public class Biopsy extends BaseEntity {
 	}
 
 	// --- Getters & Setters
-	// --- Accessor methods
 
-	public Date getReception() {
-		return reception;
+	public Date getReceptionDate() {
+		return receptionDate;
 	}
 
-	public void setReception(Date reception) {
-		this.reception = reception;
+	public void setReceptionDate(Date receptionDate) {
+		this.receptionDate = receptionDate;
 	}
 
 	public String getCode() {
@@ -87,12 +86,12 @@ public class Biopsy extends BaseEntity {
 		this.code = code;
 	}
 
-	public String getSample() {
-		return sample;
+	public String getClinical_diag() {
+		return clinical_diag;
 	}
 
-	public void setSample(String sample) {
-		this.sample = sample;
+	public void setClinical_diag(String clinical_diag) {
+		this.clinical_diag = clinical_diag;
 	}
 
 	public Date getExamDate() {
