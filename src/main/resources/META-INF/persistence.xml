@@ -18,7 +18,7 @@
 			<!-- END: Enable second level cache -->
 			
 			<!-- START: Hibernate - Enable database creation/update -->
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
 			<!-- END: Hibernate - Enable database creation/update -->
 			

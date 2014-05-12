@@ -28,15 +28,16 @@ public class Biopsy extends BaseEntity {
 
 	private Date reception;
 	private String code;
+	@Column(columnDefinition = "text")
 	private String sample;
 
 	@Column(table = "clinical_data")
 	private Date examDate;
-	@Column(table = "clinical_data")
+	@Column(table = "clinical_data", columnDefinition = "text")
 	private String macroExam;
-	@Column(table = "clinical_data")
+	@Column(table = "clinical_data", columnDefinition = "text")
 	private String microExam;
-	@Column(table = "clinical_data")
+	@Column(table = "clinical_data", columnDefinition = "text")
 	private String diagnose;
 
 	@ManyToOne
