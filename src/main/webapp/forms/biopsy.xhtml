@@ -18,16 +18,16 @@
 								<h:inputText size="130" required="true" />
 								<h:outputLabel value="Fecha de entrada:" />
 								<r:calendar />
-								<h:outputLabel value="Paciente" />
+								<h:outputLabel value="Paciente:" />
 								<h:panelGroup>
 									<fieldset>
 										<h:panelGrid columns="4">
 											<h:outputLabel value="Nombres:" />
-											<h:inputText required="true" />
+											<h:inputText size="50" required="true" />
 											<h:outputLabel value="Apellidos:" />
-											<h:inputText required="true" />
+											<h:inputText size="50" required="true" />
 											<h:outputLabel value="Edad:" />
-											<r:inputNumberSpinner required="true" />
+											<r:inputNumberSpinner required="true" style="margin-bottom: -4px;" />
 											<h:outputLabel value="Sexo:" />
 											<h:selectOneRadio required="true">
 												<f:selectItem itemLabel="F" itemValue="FEMALE" />
