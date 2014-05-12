@@ -17,11 +17,11 @@
 								<legend>Paciente:</legend>
 								<h:panelGrid columns="4">
 									<h:outputLabel value="Nombres:" />
-									<h:inputText size="45" required="true" />
+									<h:inputText size="60" required="true" />
 									<h:outputLabel value="Edad:" />
 									<r:inputNumberSlider required="true" enableManualInput="false" showBoundaryValues="false" />
 									<h:outputLabel value="Apellidos:" />
-									<h:inputText size="45" required="true" />
+									<h:inputText size="60" required="true" />
 									<h:outputLabel value="Sexo:" />
 									<h:selectOneRadio required="true">
 										<f:selectItem itemLabel="F" itemValue="FEMALE" />
@@ -29,6 +29,8 @@
 									</h:selectOneRadio>
 								</h:panelGrid>
 							</fieldset>
+							<hr />
+							
 							<h:panelGrid columns="2">
 								<h:outputLabel value="Biopsia:" />
 								<h:inputText size="130" required="true" />
