@@ -21,17 +21,19 @@
 								<h:outputLabel value="Paciente" />
 								<h:panelGroup>
 									<fieldset>
-										<h:outputLabel value="Nombres:" />
-										<h:inputText required="true" />
-										<h:outputLabel value="Apellidos:" />
-										<h:inputText required="true" />
-										<h:outputLabel value="Edad:" />
-										<r:inputNumberSpinner required="true" />
-										<h:outputLabel value="Sexo:" />
-										<h:selectOneRadio required="true">
-											<f:selectItem itemLabel="F" itemValue="FEMALE" />
-											<f:selectItem itemLabel="M" itemValue="MALE" />
-										</h:selectOneRadio>
+										<h:panelGrid columns="4">
+											<h:outputLabel value="Nombres:" />
+											<h:inputText required="true" />
+											<h:outputLabel value="Apellidos:" />
+											<h:inputText required="true" />
+											<h:outputLabel value="Edad:" />
+											<r:inputNumberSpinner required="true" />
+											<h:outputLabel value="Sexo:" />
+											<h:selectOneRadio required="true">
+												<f:selectItem itemLabel="F" itemValue="FEMALE" />
+												<f:selectItem itemLabel="M" itemValue="MALE" />
+											</h:selectOneRadio>
+										</h:panelGrid>
 									</fieldset>
 								</h:panelGroup>
 								<h:outputLabel value="Medico:" />
