@@ -13,29 +13,27 @@
 					<h3 class="tcentered">Biopsia</h3>
 					<r:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
 						<r:tab header="Generalidades">
+							<fieldset>
+								<legend>Paciente:</legend>
+								<h:panelGrid columns="4">
+									<h:outputLabel value="Nombres:" />
+									<h:inputText size="45" required="true" />
+									<h:outputLabel value="Edad:" />
+									<r:inputNumberSlider required="true" enableManualInput="false" showBoundaryValues="false" />
+									<h:outputLabel value="Apellidos:" />
+									<h:inputText size="45" required="true" />
+									<h:outputLabel value="Sexo:" />
+									<h:selectOneRadio required="true">
+										<f:selectItem itemLabel="F" itemValue="FEMALE" />
+										<f:selectItem itemLabel="M" itemValue="MALE" />
+									</h:selectOneRadio>
+								</h:panelGrid>
+							</fieldset>
 							<h:panelGrid columns="2">
 								<h:outputLabel value="Biopsia:" />
 								<h:inputText size="130" required="true" />
 								<h:outputLabel value="Fecha de entrada:" />
 								<r:calendar />
-								<h:outputLabel value="Paciente:" />
-								<h:panelGroup>
-									<fieldset>
-										<h:panelGrid columns="4">
-											<h:outputLabel value="Nombres:" />
-											<h:inputText size="45" required="true" />
-											<h:outputLabel value="Apellidos:" />
-											<h:inputText size="45" required="true" />
-											<h:outputLabel value="Edad:" />
-											<r:inputNumberSlider required="true" enableManualInput="false" showBoundaryValues="false" />
-											<h:outputLabel value="Sexo:" />
-											<h:selectOneRadio required="true">
-												<f:selectItem itemLabel="F" itemValue="FEMALE" />
-												<f:selectItem itemLabel="M" itemValue="MALE" />
-											</h:selectOneRadio>
-										</h:panelGrid>
-									</fieldset>
-								</h:panelGroup>
 								<h:outputLabel value="Medico:" />
 								<h:selectOneListbox>
 									<f:selectItems />
