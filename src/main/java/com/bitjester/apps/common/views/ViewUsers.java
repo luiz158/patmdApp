@@ -34,7 +34,7 @@ public class ViewUsers implements Serializable {
 	// ================================
 	// ======= Users Methods ==========
 	// ================================
-	
+
 	@Named
 	@Produces
 	@RequestScoped
@@ -65,6 +65,10 @@ public class ViewUsers implements Serializable {
 	public void load(Long id) throws Exception {
 		managedUser = em.find(AppUser.class, id);
 		managedUser.setActiveRole(managedUser.getAppRole(appName));
+	}
+
+	public void newInstance() {
+		managedUser = new AppUser();
 	}
 
 	public void refresh() throws Exception {
