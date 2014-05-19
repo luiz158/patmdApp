@@ -56,6 +56,37 @@
 			</r:outputPanel>
 		</h:form>
 
+		<r:popupPanel id="popup" autosized="true" modal="true">
+			<h:form id="uForm">
+				<r:outputPanel ajaxRendered="true">
+					<r:region>
+
+						<fieldset class="centered">
+							<legend>Doctor form:</legend>
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Nombres:" />
+								<h:inputText value="#{managedDoctor.fname}" />
+								<h:outputLabel value="Apellidos:" />
+								<h:inputText value="#{managedDoctor.lname}" />
+								<h:outputLabel value="Especialidad:" />
+								<h:inputText value="#{managedDoctor.specialty}" />
+							</h:panelGrid>
+							<hr />
+							<div class="tcentered">
+								<r:commandButton value="Save">
+									<r:ajax event="click" />
+								</r:commandButton>
+								<r:commandButton value="Cancel" immediate="true">
+									<r:ajax event="click" />
+								</r:commandButton>
+							</div>
+						</fieldset>
+
+					</r:region>
+				</r:outputPanel>
+			</h:form>
+		</r:popupPanel>
+
 	</ui:define>
 </ui:composition>
 </html>
