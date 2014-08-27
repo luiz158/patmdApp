@@ -28,6 +28,13 @@ public abstract class BaseEntity implements Serializable {
 	@Column(name = "update_Time")
 	protected Date updateTime;
 
+	// Check if the Object has been persisted.
+	public boolean isNew() {
+		if (null == id)
+			return true;
+		return false;
+	}
+
 	// --- Overrides
 	// Check this video: https://www.youtube.com/watch?v=E-LG5DlOKBw
 	// Check & Override Hash method.

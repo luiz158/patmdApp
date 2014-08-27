@@ -9,6 +9,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 
 import com.bitjester.apps.common.utils.BookKeeper;
+import com.bitjester.apps.common.utils.CodeUtil;
 import com.bitjester.apps.common.utils.FacesUtil;
 import com.bitjester.apps.md.entities.Biopsy;
 import com.bitjester.apps.md.entities.Image;
@@ -94,7 +95,19 @@ public class ViewBiopsy implements Serializable {
 	}
 
 	public void store() throws Exception {
+		// If the object is not persisted
+		if (managedBiopsy.isNew()) {
+			// Change the code until it is not present in the DB.
+			while (checkCode(managedBiopsy.getCode()))
+				managedBiopsy.setCode(CodeUtil.generateCode('U'));
+		}
 		bk.store(managedBiopsy);
 		managedBiopsy = null;
+	}
+
+	// Returns true if the code is present in the database.
+	private Boolean checkCode(String code) {
+		String query = "FROM Biopsy WHERE b.code == " + code;
+		return em.createQuery(query, Biopsy.class).getResultList().size() > 0;
 	}
 }

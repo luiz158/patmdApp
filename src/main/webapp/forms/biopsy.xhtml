@@ -34,6 +34,10 @@
 							<h:panelGrid columns="2">
 								<h:outputLabel value="Biopsia:" />
 								<h:inputText size="130" required="true" />
+								<h:outputLabel value="Codigo interno:" />
+								<h:inputText size="30" required="true" />
+								<h:outputLabel value="iCode:" />
+								<h:inputText size="30" readonly="true" />
 								<h:outputLabel value="Fecha de entrada:" />
 								<r:calendar />
 								<h:outputLabel value="Medico:" />
@@ -48,7 +52,7 @@
 						<r:tab header="Examenes">
 							<h:panelGrid columns="2">
 								<h:outputLabel value="Fecha de lectura:" />
-								<r:calendar  />
+								<r:calendar />
 								<h:outputLabel value="Examen macroscopico:" />
 								<h:inputTextarea required="true" cols="130" rows="12" />
 								<h:outputLabel value="Examen microscopico:" />
