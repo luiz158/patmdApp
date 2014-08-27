@@ -28,6 +28,12 @@ public class ViewBiopsy implements Serializable {
 	private Biopsy managedBiopsy;
 	private Image managedImage;
 
+	// Constructor
+	public ViewBiopsy() {
+		super();
+		managedBiopsy = new Biopsy();
+	}
+
 	// ================================
 	// ======= Image Methods ==========
 	// ================================
@@ -84,10 +90,6 @@ public class ViewBiopsy implements Serializable {
 		managedBiopsy = em.find(Biopsy.class, id);
 	}
 
-	public void refresh() {
-		managedBiopsy = null;
-	}
-
 	public void remove(Long id) throws Exception {
 		Biopsy biopsy = em.find(Biopsy.class, id);
 		bk.remove(biopsy);
@@ -103,6 +105,7 @@ public class ViewBiopsy implements Serializable {
 		}
 		bk.store(managedBiopsy);
 		managedBiopsy = null;
+		FacesUtil.navTo("/forms/biopsies.xhtml");
 	}
 
 	// Returns true if the code is present in the database.

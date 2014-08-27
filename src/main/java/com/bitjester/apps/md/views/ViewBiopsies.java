@@ -11,13 +11,14 @@ import javax.persistence.EntityManager;
 
 import com.bitjester.apps.common.login.AppSession;
 import com.bitjester.apps.common.utils.BookKeeper;
+import com.bitjester.apps.common.utils.FacesUtil;
 import com.bitjester.apps.md.entities.Biopsy;
 
 @Named
 @ViewScoped
 public class ViewBiopsies implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private BookKeeper bk;
 
@@ -44,8 +45,17 @@ public class ViewBiopsies implements Serializable {
 		return em.createQuery(query, Biopsy.class).getResultList();
 	}
 
-	public void remove(Long id) throws Exception {
-		Biopsy biopsy = em.find(Biopsy.class, id);
-		bk.remove(biopsy);
+	public void add() {
+		FacesUtil.navTo("/forms/biopsy.xhtml");
+	}
+
+	public void remove(Long id) {
+		try {
+			Biopsy biopsy = em.find(Biopsy.class, id);
+			bk.remove(biopsy);
+		} catch (Exception e) {
+			FacesUtil.addMessage("Error ocurred, please reload page and try again.");
+			e.printStackTrace();
+		}
 	}
 }
