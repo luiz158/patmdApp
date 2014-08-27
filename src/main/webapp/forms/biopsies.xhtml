@@ -10,6 +10,7 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
+					<h:commandButton action="#{viewBiopsies.add}" value="+" />
 					<h3 class="tcentered">Biopsias</h3>
 					<r:dataTable value="#{biopsies}" var="b" rowKeyVar="rowNum" styleClass="centered" style="width: 800px;">
 						<r:column styleClass="tcentered">
