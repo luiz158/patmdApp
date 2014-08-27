@@ -17,11 +17,11 @@
 								<legend>Paciente:</legend>
 								<h:panelGrid columns="4">
 									<h:outputLabel value="Nombres:" />
-									<h:inputText size="60" required="true" />
+									<h:inputText size="40" required="true" />
 									<h:outputLabel value="Edad:" />
 									<r:inputNumberSlider required="true" enableManualInput="false" showArrows="true" />
 									<h:outputLabel value="Apellidos:" />
-									<h:inputText size="60" required="true" />
+									<h:inputText size="40" required="true" />
 									<h:outputLabel value="Sexo:" />
 									<h:selectOneRadio required="true">
 										<f:selectItem itemLabel="F" itemValue="FEMALE" />
@@ -31,22 +31,31 @@
 							</fieldset>
 							<hr />
 
-							<h:panelGrid columns="2">
-								<h:outputLabel value="Biopsia:" />
-								<h:inputText size="130" required="true" />
-								<h:outputLabel value="Codigo interno:" />
-								<h:inputText size="30" required="true" />
-								<h:outputLabel value="iCode:" />
-								<h:inputText size="30" readonly="true" />
-								<h:outputLabel value="Fecha de entrada:" />
-								<r:calendar />
-								<h:outputLabel value="Medico:" />
-								<h:selectOneListbox>
-									<f:selectItems />
-								</h:selectOneListbox>
-								<h:outputLabel value="Diagnostico clinico:" />
-								<h:inputTextarea required="true" cols="130" rows="12" />
-							</h:panelGrid>
+							<h:outputLabel value="Biopsia:" />
+							<h:inputText size="100" required="true" />
+
+							<fieldset>
+								<legend>Control interno:</legend>
+								<h:panelGrid columns="4">
+									<h:outputLabel value="Biopsia:" />
+									<h:inputText size="40" required="true" />
+									<h:outputLabel value="Codigo interno:" />
+									<h:inputText size="40" required="true" />
+									<h:outputLabel value="iCode:" />
+									<h:inputText size="40" readonly="true" />
+									<h:outputLabel value="Fecha de entrada:" />
+									<r:calendar />
+									<h:outputLabel value="Medico:" />
+									<h:selectOneListbox>
+										<f:selectItems />
+									</h:selectOneListbox>
+								</h:panelGrid>
+							</fieldset>
+
+							<fieldset>
+								<legend>Diagnostico clinico:</legend>
+								<h:inputTextarea required="true" cols="100" rows="12" />
+							</fieldset>
 						</r:tab>
 
 						<r:tab header="Examenes">
