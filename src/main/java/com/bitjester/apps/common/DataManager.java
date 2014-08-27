@@ -38,10 +38,14 @@ public class DataManager implements Serializable {
 		if (null == entity)
 			throw new Exception("Method trying to store null on Persistence Context.");
 
+		System.out.println("Persisting: " + entity);
+
 		BaseEntity be = null;
-		if (null == entity.getId()) {
+		if (entity.isNew()) {
+			System.out.println("Persisting: " + entity);
 			em.persist(entity);
 		} else {
+			System.out.println("Merging: " + entity);
 			be = em.merge(entity);
 		}
 		em.flush();

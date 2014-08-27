@@ -72,7 +72,7 @@ public class BookKeeper implements Serializable {
 
 	public BaseEntity store(BaseEntity entity) throws Exception {
 		try {
-			if (null == entity.getId()) {
+			if (entity.isNew()) {
 				// Entity is new and will be persisted
 				entity.setCreateTime(new Date(System.currentTimeMillis()));
 				entity.setCreateUser(userInfo());
