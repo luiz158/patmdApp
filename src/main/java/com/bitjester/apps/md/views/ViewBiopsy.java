@@ -110,7 +110,7 @@ public class ViewBiopsy implements Serializable {
 
 	// Returns true if the code is present in the database.
 	private Boolean checkCode(String code) {
-		String query = "FROM Biopsy WHERE b.code == " + code;
+		String query = "FROM Biopsy WHERE b.code == '" + code + "'";
 		return em.createQuery(query, Biopsy.class).getResultList().size() > 0;
 	}
 }
