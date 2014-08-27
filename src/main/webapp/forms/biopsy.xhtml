@@ -10,7 +10,7 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<h3 class="tcentered">Biopsia</h3>
+					<h3 class="tcentered">Biopsia - #{managedBiopsy.code}</h3>
 					<r:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
 						<r:tab header="Generalidades">
 							<fieldset>
@@ -32,17 +32,17 @@
 							<hr />
 
 							<h:outputLabel value="Biopsia:" />
-							<h:inputText size="100" required="true" />
+							<h:inputText size="100" />
 
 							<fieldset>
 								<legend>Control interno:</legend>
 								<h:panelGrid columns="4">
 									<h:outputLabel value="Biopsia:" />
-									<h:inputText size="40" required="true" />
+									<h:inputText size="40" />
 									<h:outputLabel value="Codigo interno:" />
-									<h:inputText size="40" required="true" />
+									<h:inputText size="40" />
 									<h:outputLabel value="iCode:" />
-									<h:inputText size="40" readonly="true" />
+									<h:inputText size="40" readonly="true" value="#{managedBiopsy.code}" />
 									<h:outputLabel value="Fecha de entrada:" />
 									<r:calendar />
 									<h:outputLabel value="Medico:" />
@@ -63,15 +63,15 @@
 								<h:outputLabel value="Fecha de lectura:" />
 								<r:calendar />
 								<h:outputLabel value="Examen macroscopico:" />
-								<h:inputTextarea required="true" cols="130" rows="12" />
+								<h:inputTextarea cols="130" rows="12" />
 								<h:outputLabel value="Examen microscopico:" />
-								<h:inputTextarea required="true" cols="130" rows="12" />
+								<h:inputTextarea cols="130" rows="12" />
 								<h:outputLabel value="ADICAP:" />
 								<h:selectOneListbox>
 									<f:selectItems />
 								</h:selectOneListbox>
 								<h:outputLabel value="Diagnostico:" />
-								<h:inputTextarea required="true" cols="130" rows="12" />
+								<h:inputTextarea cols="130" rows="12" />
 							</h:panelGrid>
 						</r:tab>
 
@@ -94,7 +94,7 @@
 
 						<hr />
 						<div style="text-align: center;">
-							<h:commandButton value="Save" />
+							<h:commandButton value="Save" action="#{viewBiopsy.store}" />
 							<h:commandButton value="Cancel" immediate="true" />
 						</div>
 					</r:tabPanel>
