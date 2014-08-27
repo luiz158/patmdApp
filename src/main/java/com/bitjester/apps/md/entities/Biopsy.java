@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import com.bitjester.apps.common.BaseEntity;
+import com.bitjester.apps.common.utils.CodeUtil;
 import com.bitjester.apps.common.utils.HashUtil;
 
 @Entity
@@ -61,7 +62,7 @@ public class Biopsy extends BaseEntity {
 		examDate = new Date();
 		pacient = new Patient();
 		images = new ArrayList<Image>(0);
-
+		code = CodeUtil.generateCode('U');
 	}
 
 	public void generateCode() throws Exception {
