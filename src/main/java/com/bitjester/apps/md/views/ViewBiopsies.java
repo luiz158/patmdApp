@@ -46,7 +46,7 @@ public class ViewBiopsies implements Serializable {
 	}
 
 	public void add() {
-		FacesUtil.navTo("/forms/biopsy.xhtml");
+		FacesUtil.navTo("forms/biopsy.xhtml");
 	}
 
 	public void remove(Long id) {

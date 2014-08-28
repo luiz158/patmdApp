@@ -99,7 +99,7 @@ public class ViewBiopsy implements Serializable {
 	public void remove(Long id) throws Exception {
 		Biopsy biopsy = em.find(Biopsy.class, id);
 		bk.remove(biopsy);
-		FacesUtil.navTo("/forms/biopsies.xhtml");
+		FacesUtil.navTo("forms/biopsies.xhtml");
 	}
 
 	public void store() throws Exception {
@@ -111,7 +111,7 @@ public class ViewBiopsy implements Serializable {
 		}
 		bk.store(managedBiopsy);
 		// managedBiopsy = null;
-		FacesUtil.navTo("/forms/biopsies.xhtml");
+		FacesUtil.navTo("forms/biopsies.xhtml");
 	}
 
 	// Returns true if the code is present in the database.
