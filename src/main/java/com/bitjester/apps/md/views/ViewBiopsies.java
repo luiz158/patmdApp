@@ -51,8 +51,7 @@ public class ViewBiopsies implements Serializable {
 
 	public void remove(Long id) {
 		try {
-			Biopsy biopsy = em.find(Biopsy.class, id);
-			bk.remove(biopsy);
+			bk.remove(em.find(Biopsy.class, id));
 		} catch (Exception e) {
 			FacesUtil.addMessage("Error ocurred, please reload page and try again.");
 			e.printStackTrace();

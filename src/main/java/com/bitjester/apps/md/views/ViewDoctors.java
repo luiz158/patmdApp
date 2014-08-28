@@ -11,6 +11,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 
 import com.bitjester.apps.common.utils.BookKeeper;
+import com.bitjester.apps.common.utils.FacesUtil;
 import com.bitjester.apps.md.entities.Doctor;
 
 @Named
@@ -67,7 +68,7 @@ public class ViewDoctors implements Serializable {
 		managedDoctor = em.find(Doctor.class, id);
 	}
 
-	public void newInstance() {
+	public void add() {
 		managedDoctor = new Doctor();
 	}
 
@@ -75,10 +76,13 @@ public class ViewDoctors implements Serializable {
 		managedDoctor = null;
 	}
 
-	public void remove(Long id) throws Exception {
-		Doctor doctor = em.find(Doctor.class, id);
-		bk.remove(doctor);
-
+	public void remove(Long id) {
+		try{
+			bk.remove(em.find(Doctor.class, id));
+		} catch (Exception e) {
+			FacesUtil.addMessage("Error ocurred, please reload page and try again.");
+			e.printStackTrace();
+		}
 	}
 
 	public void store() throws Exception {

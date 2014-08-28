@@ -10,8 +10,11 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
+					<r:commandButton value="+" >
+						<r:ajax event="click" execute="@this" listener="#{viewDoctors.add}"
+												oncomplete="#{r:component('popup')}.show();" />
+					</r:commandButton>
 					<h3 class="tcentered">Doctores</h3>
-
 					<r:tabPanel styleClass="centered" style="width: 800px;">
 						<r:repeat value="#{doctorStartLetters}" var="letter">
 							<r:tab header="#{letter.toUpperCase()}" switchType="ajax">
