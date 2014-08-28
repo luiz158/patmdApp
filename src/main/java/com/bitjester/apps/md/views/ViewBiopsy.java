@@ -104,7 +104,7 @@ public class ViewBiopsy implements Serializable {
 				managedBiopsy.setCode(CodeUtil.generateCode('U'));
 		}
 		bk.store(managedBiopsy);
-		managedBiopsy = null;
+		//managedBiopsy = null;
 		FacesUtil.navTo("/forms/biopsies.xhtml");
 	}
 

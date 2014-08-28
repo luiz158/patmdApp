@@ -37,9 +37,7 @@ public class DataManager implements Serializable {
 	public BaseEntity store(BaseEntity entity) throws Exception {
 		if (null == entity)
 			throw new Exception("Method trying to store null on Persistence Context.");
-
-		System.out.println("Persisting: " + entity);
-
+		
 		BaseEntity be = null;
 		if (entity.isNew()) {
 			System.out.println("Persisting: " + entity);

@@ -38,10 +38,11 @@ public class ViewBiopsies implements Serializable {
 		String query = "FROM Biopsy b ORDER BY b.examDate DESC, b.pacient.lname";
 
 		// Return only biopsies for this Doctor/user.
+		/*
 		if (!userSession.getActiveUser().getActiveRole().equals("patho")) {
 			query = "FROM Biopsy b WHERE b.doctor.id =" + userSession.getActiveUser().getId();
 			query += "ORDER BY b.examDate DESC, b.pacient.lname";
-		}
+		}*/
 		return em.createQuery(query, Biopsy.class).getResultList();
 	}
 
