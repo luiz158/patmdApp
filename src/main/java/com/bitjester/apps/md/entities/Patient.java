@@ -1,6 +1,8 @@
 package com.bitjester.apps.md.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -20,7 +22,8 @@ public class Patient extends BaseEntity {
 	private String fname;
 	private String lname;
 	private Integer age;
-	private Enum<EnumSex> sex = EnumSex.MALE;
+	@Enumerated(EnumType.STRING)
+	private EnumSex sex = EnumSex.MALE;
 
 	@Transient
 	public String getFullName() {
@@ -61,11 +64,11 @@ public class Patient extends BaseEntity {
 		this.age = age;
 	}
 
-	public Enum<EnumSex> getSex() {
+	public EnumSex getSex() {
 		return sex;
 	}
 
-	public void setSex(Enum<EnumSex> sex) {
+	public void setSex(EnumSex sex) {
 		this.sex = sex;
 	}
 }
