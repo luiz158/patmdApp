@@ -29,7 +29,6 @@ public class Biopsy extends BaseEntity {
 
 	private Date receptionDate;
 	private String code;
-	private String icode;
 	@Column(columnDefinition = "text")
 	private String clinical_diag;
 
@@ -86,14 +85,6 @@ public class Biopsy extends BaseEntity {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	public String getIcode() {
-		return icode;
-	}
-
-	public void setIcode(String icode) {
-		this.icode = icode;
 	}
 
 	public String getClinical_diag() {

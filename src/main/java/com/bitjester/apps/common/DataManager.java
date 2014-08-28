@@ -40,10 +40,8 @@ public class DataManager implements Serializable {
 		
 		BaseEntity be = null;
 		if (entity.isNew()) {
-			System.out.println("Persisting: " + entity);
 			em.persist(entity);
 		} else {
-			System.out.println("Merging: " + entity);
 			be = em.merge(entity);
 		}
 		em.flush();
