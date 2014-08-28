@@ -2,6 +2,7 @@ package com.bitjester.apps.md.views;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -30,8 +31,8 @@ public class ViewBiopsy implements Serializable {
 	private Image managedImage;
 
 	// Constructor
-	public ViewBiopsy() {
-		super();
+	@PostConstruct
+	public void init() {
 		String b_id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("biopsy");
 		if (null == b_id)
 			managedBiopsy = new Biopsy();
