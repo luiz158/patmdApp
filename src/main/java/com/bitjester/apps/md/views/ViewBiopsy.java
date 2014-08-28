@@ -3,6 +3,7 @@ package com.bitjester.apps.md.views;
 import java.io.Serializable;
 
 import javax.enterprise.inject.Produces;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -31,7 +32,11 @@ public class ViewBiopsy implements Serializable {
 	// Constructor
 	public ViewBiopsy() {
 		super();
-		managedBiopsy = new Biopsy();
+		String b_id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("biopsy");
+		if (null == b_id)
+			managedBiopsy = new Biopsy();
+		else
+			load(Long.valueOf(b_id));
 	}
 
 	// ================================
@@ -104,7 +109,7 @@ public class ViewBiopsy implements Serializable {
 				managedBiopsy.setCode(CodeUtil.generateCode('U'));
 		}
 		bk.store(managedBiopsy);
-		//managedBiopsy = null;
+		// managedBiopsy = null;
 		FacesUtil.navTo("/forms/biopsies.xhtml");
 	}
 

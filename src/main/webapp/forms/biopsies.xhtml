@@ -43,9 +43,9 @@
 						</r:column>
 						<r:column styleClass="tcentered">
 							<f:facet name="header">.</f:facet>
-							<r:commandLink action="biopsy.xhtml?faces-redirect=true">
+							<r:commandLink action="biopsy.xhtml?faces-redirect=true" >
 								<h:graphicImage library="images/icons" name="edit.png" alt="Edit" />
-								<f:setPropertyActionListener target="#{viewBiopsy.managedBiopsy}" value="#{b}" />
+								<f:param name="biopsy" value="#{b.id}"/>
 							</r:commandLink>
 							&nbsp;
 							<r:commandLink>
