@@ -10,20 +10,21 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<h3 class="tcentered">Biopsia - #{managedBiopsy.code}</h3>
+					<h3 class="tcentered">Biopsia - #{managedBiopsy.icode}</h3>
 					<r:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
 						<r:tab header="Generalidades">
 							<fieldset>
 								<legend>Paciente:</legend>
 								<h:panelGrid columns="4">
 									<h:outputLabel value="Nombres:" />
-									<h:inputText size="40" required="true" />
+									<h:inputText size="40" required="true" value="#{managedBiopsy.pacient.fname}" />
 									<h:outputLabel value="Edad:" />
-									<r:inputNumberSlider required="true" enableManualInput="false" showArrows="true" />
+									<r:inputNumberSlider required="true" enableManualInput="false" showArrows="true"
+										value="#{managedBiopsy.pacient.age}" />
 									<h:outputLabel value="Apellidos:" />
-									<h:inputText size="40" required="true" />
+									<h:inputText size="40" required="true" value="#{managedBiopsy.pacient.fname}" />
 									<h:outputLabel value="Sexo:" />
-									<h:selectOneRadio required="true">
+									<h:selectOneRadio required="true" value="#{managedBiopsy.pacient.sex}">
 										<f:selectItem itemLabel="F" itemValue="FEMALE" />
 										<f:selectItem itemLabel="M" itemValue="MALE" />
 									</h:selectOneRadio>
@@ -31,22 +32,17 @@
 							</fieldset>
 							<hr />
 
-							<h:outputLabel value="Biopsia:" />
-							<h:inputText size="100" />
-
 							<fieldset>
 								<legend>Control interno:</legend>
 								<h:panelGrid columns="4">
-									<h:outputLabel value="Biopsia:" />
-									<h:inputText size="40" />
 									<h:outputLabel value="Codigo interno:" />
-									<h:inputText size="40" />
+									<h:inputText size="40" value="#{managedBiopsy.code}" />
 									<h:outputLabel value="iCode:" />
-									<h:inputText size="40" readonly="true" value="#{managedBiopsy.code}" />
+									<h:inputText size="40" readonly="true" value="#{managedBiopsy.icode}" />
 									<h:outputLabel value="Fecha de entrada:" />
-									<r:calendar />
+									<r:calendar value="#{managedBiopsy.receptionDate}" />
 									<h:outputLabel value="Medico:" />
-									<h:selectOneListbox>
+									<h:selectOneListbox value="#{managedBiopsy.doctor}">
 										<f:selectItems />
 									</h:selectOneListbox>
 								</h:panelGrid>
@@ -54,24 +50,24 @@
 
 							<fieldset>
 								<legend>Diagnostico clinico:</legend>
-								<h:inputTextarea required="true" cols="100" rows="12" />
+								<h:inputTextarea required="true" cols="100" rows="6" value="#{managedBiopsy.clinical_diag}" />
 							</fieldset>
 						</r:tab>
 
 						<r:tab header="Examenes">
 							<h:panelGrid columns="2">
 								<h:outputLabel value="Fecha de lectura:" />
-								<r:calendar />
+								<r:calendar value="#{managedBiopsy.examDate}" />
 								<h:outputLabel value="Examen macroscopico:" />
-								<h:inputTextarea cols="130" rows="12" />
+								<h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.macroExam}" />
 								<h:outputLabel value="Examen microscopico:" />
-								<h:inputTextarea cols="130" rows="12" />
+								<h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.microExam}" />
 								<h:outputLabel value="ADICAP:" />
-								<h:selectOneListbox>
+								<h:selectOneListbox value="#{managedBiopsy.adicap}">
 									<f:selectItems />
 								</h:selectOneListbox>
 								<h:outputLabel value="Diagnostico:" />
-								<h:inputTextarea cols="130" rows="12" />
+								<h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.diagnose}" />
 							</h:panelGrid>
 						</r:tab>
 
