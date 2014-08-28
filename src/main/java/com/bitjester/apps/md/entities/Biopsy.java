@@ -59,7 +59,7 @@ public class Biopsy extends BaseEntity {
 
 	public Biopsy() {
 		super();
-		examDate = new Date();
+		receptionDate = new Date();
 		pacient = new Patient();
 		images = new ArrayList<Image>(0);
 		icode = CodeUtil.generateCode('U');

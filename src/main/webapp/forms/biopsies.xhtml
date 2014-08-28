@@ -19,11 +19,15 @@
 						</r:column>
 						<r:column styleClass="tcentered">
 							<f:facet name="header">Recibida</f:facet>
-							<h:outputText value="#{b.receptionDate}" />
+							<h:outputText value="#{b.receptionDate}">
+								<f:converter binding="#{converterForDate}" />
+							</h:outputText>
 						</r:column>
 						<r:column styleClass="tcentered">
 							<f:facet name="header">Examinada</f:facet>
-							<h:outputText value="#{b.examDate}" />
+							<h:outputText value="#{b.examDate}">
+								<f:converter binding="#{converterForDate}" />
+							</h:outputText>
 						</r:column>
 						<r:column styleClass="tcentered">
 							<f:facet name="header">Paciente</f:facet>
