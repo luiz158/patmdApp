@@ -31,8 +31,8 @@ public class DefaultUsers {
 		logger.info("Starting application: " + appName + ".");
 		try {
 			checkForUser("admin", "Administrator User");
-			// checkForUser("luis", "Luis Garcia");
-			// checkForUser("test", "Test User");
+			checkForUser("luis", "Luis Garcia");
+			checkForUser("test", "Test User");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
