@@ -48,10 +48,10 @@
 								<f:param name="biopsy" value="#{b.id}"/>
 							</h:link>
 							&nbsp;
-							<r:commandLink>
+							<h:link outcome="b_report.xhtml" target="_blank">
 								<h:graphicImage library="images/icons" name="view.png" alt="View" />
-								<f:setPropertyActionListener target="#{viewBiopsy.managedBiopsy}" value="#{b}" />
-							</r:commandLink>
+								<f:param name="biopsy" value="#{b.id}"/>
+							</h:link>
 						</r:column>
 					</r:dataTable>
 

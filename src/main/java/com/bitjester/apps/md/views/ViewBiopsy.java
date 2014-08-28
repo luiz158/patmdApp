@@ -30,9 +30,9 @@ public class ViewBiopsy implements Serializable {
 	private Biopsy managedBiopsy;
 	private Image managedImage;
 
-	// Constructor
 	@PostConstruct
 	public void init() {
+		// Check for biopsy parameter in request - if not found its a request for a new biopsy.
 		String b_id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("biopsy");
 		if (null == b_id)
 			managedBiopsy = new Biopsy();
