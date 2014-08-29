@@ -43,15 +43,14 @@
 						</r:column>
 						<r:column styleClass="tcentered">
 							<f:facet name="header">.</f:facet>
-							<!--h:link outcome="biopsy.xhtml" -->
-							<r:commandLink action="biopsy.xhtml?faces-redirect=true">
+							<h:link outcome="biopsy.xhtml?faces-redirect=true">
 								<h:graphicImage library="images/icons" name="edit.png" alt="Edit" />
-								<f:param name="biopsy" value="#{b.id}"/>
-							</r:commandLink>
+								<f:param name="biopsy" value="#{b.icode}" />
+							</h:link>
 							&nbsp;
 							<h:link outcome="b_report.xhtml" target="_blank">
 								<h:graphicImage library="images/icons" name="view.png" alt="View" />
-								<f:param name="biopsy" value="#{b.id}"/>
+								<f:param name="biopsy" value="#{b.id}" />
 							</h:link>
 						</r:column>
 					</r:dataTable>

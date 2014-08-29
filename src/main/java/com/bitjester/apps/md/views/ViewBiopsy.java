@@ -33,11 +33,11 @@ public class ViewBiopsy implements Serializable {
 	@PostConstruct
 	public void init() {
 		// Check for biopsy parameter in request - if not found its a request for a new biopsy.
-		String b_id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("biopsy");
-		if (null == b_id)
+		String b = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("biopsy");
+		if (null == b)
 			managedBiopsy = new Biopsy();
 		else
-			load(Long.valueOf(b_id));
+			load(b);
 	}
 
 	// ================================
@@ -92,8 +92,9 @@ public class ViewBiopsy implements Serializable {
 		this.managedBiopsy = managedBiopsy;
 	}
 
-	public void load(Long id) {
-		managedBiopsy = em.find(Biopsy.class, id);
+	public void load(String code) {
+		String query = "FROM Biopsy WHERE icode = ?1";
+		managedBiopsy = em.createQuery(query, Biopsy.class).setParameter(1, code).getSingleResult();
 	}
 
 	public void remove(Long id) throws Exception {
