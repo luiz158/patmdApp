@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Produces;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -33,7 +32,7 @@ public class ViewBiopsy implements Serializable {
 	@PostConstruct
 	public void init() {
 		// Check for biopsy parameter in request - if not found its a request for a new biopsy.
-		String b = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("biopsy");
+		Long b = (Long) FacesUtil.getFlash().get("biopsy");
 		if (null == b)
 			managedBiopsy = new Biopsy();
 		else
@@ -92,9 +91,8 @@ public class ViewBiopsy implements Serializable {
 		this.managedBiopsy = managedBiopsy;
 	}
 
-	public void load(String code) {
-		String query = "FROM Biopsy WHERE icode = ?1";
-		managedBiopsy = em.createQuery(query, Biopsy.class).setParameter(1, code).getSingleResult();
+	public void load(Long id) {
+		managedBiopsy = em.find(Biopsy.class, id);
 	}
 
 	public void remove(Long id) throws Exception {

@@ -45,7 +45,8 @@ public class ViewBiopsies implements Serializable {
 		return em.createQuery(query, Biopsy.class).getResultList();
 	}
 
-	public void add() {
+	public void load(Long id) {
+		FacesUtil.getFlash().put("biopsy", id);
 		FacesUtil.navTo("forms/biopsy.xhtml");
 	}
 

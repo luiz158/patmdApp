@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 
 public abstract class FacesUtil {
 	// Misc. methods
@@ -14,6 +15,10 @@ public abstract class FacesUtil {
 	
 	private static ExternalContext getEC() {
 		return FacesContext.getCurrentInstance().getExternalContext();
+	}
+	
+	public static Flash getFlash(){
+		return getEC().getFlash();
 	}
 
 	public static void invalidateSession() {

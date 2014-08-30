@@ -10,7 +10,7 @@
 			<r:outputPanel ajaxRendered="true">
 				<r:region>
 
-					<h:commandButton action="#{viewBiopsies.add}" value="+" />
+					<h:commandButton action="biopsy.xhtml?faces-redirect=true" value="+" />
 					<h3 class="tcentered">Biopsias</h3>
 					<r:dataTable value="#{biopsies}" var="b" rowKeyVar="rowNum" styleClass="centered" style="width: 800px;">
 						<r:column styleClass="tcentered">
@@ -43,10 +43,9 @@
 						</r:column>
 						<r:column styleClass="tcentered">
 							<f:facet name="header">.</f:facet>
-							<h:link outcome="biopsy.xhtml?faces-redirect=true">
+							<r:commandLink action="#{viewBiopsies.load(b.id)}">
 								<h:graphicImage library="images/icons" name="edit.png" alt="Edit" />
-								<f:param name="biopsy" value="#{b.icode}" />
-							</h:link>
+							</r:commandLink>
 							&nbsp;
 							<h:link outcome="b_report.xhtml" target="_blank">
 								<h:graphicImage library="images/icons" name="view.png" alt="View" />
