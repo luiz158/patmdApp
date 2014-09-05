@@ -30,13 +30,14 @@ public class ViewBiopsy implements Serializable {
 	private Image managedImage;
 
 	@PostConstruct
-	public void init() {
+	private void init() {
 		// Check for biopsy parameter in request - if not found its a request for a new biopsy.
-		Long b = (Long) FacesUtil.getFlash().get("biopsy");
-		if (null == b)
+		managedBiopsy = em.find(Biopsy.class, FacesUtil.getFlash().get("biopsy"));
+		//Long b = (Long) FacesUtil.getFlash().get("biopsy");
+		if (null == managedBiopsy)
 			managedBiopsy = new Biopsy();
-		else
-			load(b);
+		//else
+		//	load(b);
 	}
 
 	// ================================
