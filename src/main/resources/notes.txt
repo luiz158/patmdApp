@@ -1,0 +1,9 @@
+Review Adding Doctors.
+- Popup on the UI.
+- Figure out how to add/verify user name before creating their user.
+
+Create/write search functions with filters.
+
+Create/write file upload functions
+- CSS to preview thumb nails after upload.
+
