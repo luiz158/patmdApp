@@ -1,16 +1,15 @@
 package com.bitjester.apps.common.utils;
 
+import com.bitjester.apps.common.BaseEntity;
+import com.bitjester.apps.common.DataManager;
+import com.bitjester.apps.common.login.AppSession;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
-
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
-
-import com.bitjester.apps.common.BaseEntity;
-import com.bitjester.apps.common.DataManager;
-import com.bitjester.apps.common.login.AppSession;
 
 @SessionScoped
 public class BookKeeper implements Serializable {
@@ -61,18 +60,17 @@ public class BookKeeper implements Serializable {
 		try {
 			logger.info("Delete: " + System.currentTimeMillis());
 			logger.info("User: " + userInfo());
-			logger.info("Deleting: " + entity);
+			logger.info("Deleting: " + entity.getId() + "::" + entity);
 			dt.remove(entity);
 		} catch (Exception e) {
 			log(e.getMessage());
 			e.printStackTrace();
-			throw e;
 		}
 	}
 
 	public BaseEntity store(BaseEntity entity) throws Exception {
 		try {
-			if (entity.isNew()) {
+			if (null == entity.getId()) {
 				// Entity is new and will be persisted
 				entity.setCreateTime(new Date(System.currentTimeMillis()));
 				entity.setCreateUser(userInfo());

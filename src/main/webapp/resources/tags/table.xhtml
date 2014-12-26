@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:cc="http://java.sun.com/jsf/composite" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:rich="http://richfaces.org/rich" xmlns:bt="http://bitjester.com/jsf/facelets">
+
+<cc:interface>
+    <cc:attribute name="paginator" default="#{false}"/>
+    <cc:attribute name="rows" default="20"/>
+    <cc:attribute name="value" required="true"/>
+</cc:interface>
+
+<cc:implementation>
+    <rich:dataTable rowClasses="row_1,row_2" rowKeyVar="rowKV" rows="#{cc.attrs.rows}"
+                    styleClass="centered" value="#{cc.attrs.value}" var="var">
+        <c:if test="#{cc.attrs.paginator}">
+            <!-- START: Top Paginator - DataScroller -->
+            <rich:dataScroller boundaryControls="hide" fastControls="hide"/>
+            <!-- END: Top Paginator - DataScroller -->
+        </c:if>
+
+        <!-- START: Row counter column -->
+        <bt:pColumn label="#" value="#{rowKV+1}."/>
+        <!-- END: Row counter column -->
+
+        <!-- START: Children columns -->
+        <cc:insertChildren/>
+        <!-- END: Children columns -->
+
+        <c:if test="#{cc.attrs.paginator}">
+            <!-- START: Bottom Paginator - DataScroller -->
+            <rich:dataScroller boundaryControls="hide" fastControls="hide"/>
+            <!-- END: Bottom Paginator - DataScroller -->
+        </c:if>
+    </rich:dataTable>
+</cc:implementation>
+</html>

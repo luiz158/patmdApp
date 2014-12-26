@@ -1,11 +1,10 @@
 package com.bitjester.apps.common.utils;
 
-import java.io.IOException;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
+import java.io.IOException;
 
 public abstract class FacesUtil {
 	// Misc. methods
@@ -27,7 +26,7 @@ public abstract class FacesUtil {
 	
 	// Navigation methods
 	private static String getCPath() {
-		// Returns String the represents the URI of the deployed app's ROOT.
+		// Returns Context's ROOT URL.
 		return getEC().getRequestContextPath() + "/";
 	}
 

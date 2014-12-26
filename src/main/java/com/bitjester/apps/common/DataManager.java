@@ -1,13 +1,12 @@
 package com.bitjester.apps.common;
 
-import java.io.Serializable;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.io.Serializable;
+import java.util.Iterator;
+import java.util.List;
 
 @Stateless
 public class DataManager implements Serializable {
@@ -22,7 +21,6 @@ public class DataManager implements Serializable {
 
 		int i = 0;
 		Query q = em.createQuery(query);
-
 		// Process parameters if any.
 		if (null != params) {
 			Iterator<Object> ite = params.iterator();
@@ -30,16 +28,15 @@ public class DataManager implements Serializable {
 				q.setParameter(i++, ite.next());
 			}
 		}
-
 		return q.executeUpdate();
 	}
 
 	public BaseEntity store(BaseEntity entity) throws Exception {
 		if (null == entity)
 			throw new Exception("Method trying to store null on Persistence Context.");
-		
+
 		BaseEntity be = null;
-		if (entity.isNew()) {
+		if (null == entity.getId()) {
 			em.persist(entity);
 		} else {
 			be = em.merge(entity);
@@ -49,6 +46,9 @@ public class DataManager implements Serializable {
 	}
 
 	public void remove(BaseEntity entity) throws Exception {
+		if (null == entity)
+			throw new Exception("Method trying to remove null from Persistence Context.");
+
 		try {
 			entity = em.find(entity.getClass(), entity.getId());
 			em.remove(entity);

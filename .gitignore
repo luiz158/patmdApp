@@ -1,6 +1,7 @@
-/target
+# IDEA Files
+.idea
+*.iml
+
+# Compilations outputs
 target
-.settings/*
-!.settings/.jsdtscope
-.project
-.classpath
+targets

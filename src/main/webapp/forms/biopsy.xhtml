@@ -1,25 +1,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:r="http://richfaces.org">
+	  xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:rich="http://richfaces.org/rich" xmlns:bc="http://java.sun.com/jsf/composite/tags">
 
 <ui:composition template="/templates/main.xhtml">
 	<ui:define name="content">
-
-		<r:notifyMessages stayTime="2000" />
+		#{appSession.checkRole(null)}
 		<h:form id="mainForm" prependId="false">
-			<r:outputPanel ajaxRendered="true">
-				<r:region>
+			<bc:region>
 
 					<h3 class="tcentered">Biopsia - #{managedBiopsy.icode}</h3>
-					<r:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
-						<r:tab header="Generalidades">
+				<rich:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
+					<rich:tab header="Generalidades">
 							<fieldset>
 								<legend>Paciente:</legend>
 								<h:panelGrid columns="4">
 									<h:outputLabel value="Nombres:" />
 									<h:inputText size="40" required="true" value="#{managedBiopsy.pacient.fname}" />
 									<h:outputLabel value="Edad:" />
-									<r:inputNumberSlider required="true" enableManualInput="false" showArrows="true"
+									<rich:inputNumberSlider required="true" enableManualInput="false" showArrows="true"
 										value="#{managedBiopsy.pacient.age}" />
 									<h:outputLabel value="Apellidos:" />
 									<h:inputText size="40" required="true" value="#{managedBiopsy.pacient.lname}" />
@@ -40,7 +39,7 @@
 									<h:outputLabel value="iCode:" />
 									<h:inputText size="40" readonly="true" value="#{managedBiopsy.icode}" />
 									<h:outputLabel value="Fecha de entrada:" />
-									<r:calendar value="#{managedBiopsy.receptionDate}" />
+									<rich:calendar value="#{managedBiopsy.receptionDate}"/>
 									<h:outputLabel value="Medico:" />
 									<h:selectOneListbox value="#{managedBiopsy.doctor}">
 										<f:selectItems />
@@ -52,12 +51,12 @@
 								<legend>Diagnostico clinico:</legend>
 								<h:inputTextarea required="true" cols="100" rows="6" value="#{managedBiopsy.clinical_diag}" />
 							</fieldset>
-						</r:tab>
+					</rich:tab>
 
-						<r:tab header="Examenes">
+					<rich:tab header="Examenes">
 							<h:panelGrid columns="2">
 								<h:outputLabel value="Fecha de lectura:" />
-								<r:calendar value="#{managedBiopsy.examDate}" />
+								<rich:calendar value="#{managedBiopsy.examDate}"/>
 								<h:outputLabel value="Examen macroscopico:" />
 								<h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.macroExam}" />
 								<h:outputLabel value="Examen microscopico:" />
@@ -69,12 +68,12 @@
 								<h:outputLabel value="Diagnostico:" />
 								<h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.diagnose}" />
 							</h:panelGrid>
-						</r:tab>
+					</rich:tab>
 
-						<r:tab header="Imagenes">
-							<r:dataGrid columns="4" var="f" rowKeyVar="rowNum">
+					<rich:tab header="Imagenes">
+						<rich:dataGrid columns="4" var="f" rowKeyVar="rowNum">
 								<h:panelGrid columns="2">
-									<r:mediaOutput element="img" mimeType="image/jpeg" />
+									<a4j:mediaOutput element="img" mimeType="image/jpeg"/>
 									<h:panelGrid columns="2">
 										<h:outputText value="Archivo:" />
 										<h:outputText value="#{f.name}" />
@@ -82,21 +81,20 @@
 										<h:outputText value="#{f.length}" />
 									</h:panelGrid>
 								</h:panelGrid>
-							</r:dataGrid>
+						</rich:dataGrid>
 							<br />
 
-							<r:fileUpload listHeight="0" styleClass="centered" />
-						</r:tab>
+						<rich:fileUpload listHeight="0" styleClass="centered"/>
+					</rich:tab>
 
 						<hr />
 						<div style="text-align: center;">
 							<h:commandButton value="Save" action="#{viewBiopsy.store}" />
 							<h:commandButton value="Cancel" immediate="true" action="biopsies.xhtml" />
 						</div>
-					</r:tabPanel>
+				</rich:tabPanel>
 
-				</r:region>
-			</r:outputPanel>
+			</bc:region>
 		</h:form>
 
 	</ui:define>

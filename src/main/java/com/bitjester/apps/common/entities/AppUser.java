@@ -1,31 +1,23 @@
 package com.bitjester.apps.common.entities;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.persistence.UniqueConstraint;
-
 import com.bitjester.apps.common.BaseEntity;
 import com.bitjester.apps.common.utils.BookKeeper;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 @Cacheable
 @Entity
-@Table(name = "app_users", uniqueConstraints = @UniqueConstraint(columnNames = { "username" }))
+@Table(name = "app_users", uniqueConstraints = @UniqueConstraint(columnNames = {"username"}), indexes = {
+		@Index(columnList = "active"), @Index(columnList = "username"), @Index(columnList = "name")})
 public class AppUser extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	private Boolean active;
 	private Boolean mustChangePassword;
+	private int attempts;
 	private Date lastLogin;
 	private Date lastLogout;
 	private String name;
@@ -39,22 +31,17 @@ public class AppUser extends BaseEntity {
 	private List<AppRole> roles;
 
 	// Constructor
-
 	public AppUser() {
 		super();
 		active = Boolean.TRUE;
 		mustChangePassword = Boolean.TRUE;
-		roles = new ArrayList<AppRole>(0);
+		roles = new ArrayList<>(0);
 	}
 
 	// Role methods
-
 	public String getAppRole(String app) {
-		Iterator<AppRole> iteR = roles.iterator();
-		AppRole role = null;
 		String returnRole = null;
-		while (iteR.hasNext()) {
-			role = iteR.next();
+		for (AppRole role : roles) {
 			if (role.getApplication().equals(app))
 				returnRole = role.getRole();
 		}
@@ -72,10 +59,7 @@ public class AppUser extends BaseEntity {
 			BookKeeper.create(role, "0 - System");
 			roles.add(role);
 		} else {
-			Iterator<AppRole> iteR = roles.iterator();
-			AppRole role = null;
-			while (iteR.hasNext()) {
-				role = iteR.next();
+			for (AppRole role : roles) {
 				if (role.getApplication().equals(application)) {
 					BookKeeper.update(role, "0 - System");
 					role.setRole(newRole);
@@ -100,6 +84,14 @@ public class AppUser extends BaseEntity {
 
 	public void setMustChangePassword(Boolean mustChangePassword) {
 		this.mustChangePassword = mustChangePassword;
+	}
+
+	public int getAttempts() {
+		return attempts;
+	}
+
+	public void setAttempts(int attempts) {
+		this.attempts = attempts;
 	}
 
 	public Date getLastLogin() {
@@ -157,5 +149,4 @@ public class AppUser extends BaseEntity {
 	public void setRoles(List<AppRole> roles) {
 		this.roles = roles;
 	}
-
 }

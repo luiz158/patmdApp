@@ -1,10 +1,9 @@
 package com.bitjester.apps.common.converters;
 
-import java.util.TimeZone;
-
 import javax.enterprise.context.RequestScoped;
 import javax.faces.convert.DateTimeConverter;
 import javax.inject.Named;
+import java.util.TimeZone;
 
 @Named
 @RequestScoped

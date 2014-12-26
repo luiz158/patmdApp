@@ -1,125 +1,105 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:r="http://richfaces.org">
+	  xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:rich="http://richfaces.org/rich" xmlns:bc="http://java.sun.com/jsf/composite/tags"
+	  xmlns:bt="http://bitjester.com/jsf/facelets">
 
-<ui:composition template="/templates/main.xhtml">
+<ui:composition template="/WEB-INF/templates/main.xhtml">
 	<ui:define name="content">
-	
 		#{appSession.checkRole('sadmin')}
-		<r:notifyMessages stayTime="2000" />
-		<h:form id="mainForm" prependId="false">
-			<r:outputPanel ajaxRendered="true">
-				<r:region>
+		<h:form id="mainForm">
+			<bc:region>
 
-					<h3 class="tcentered">Users</h3>
-					<r:tabPanel styleClass="centered" style="width: 800px;">
-						<r:repeat value="#{userStartLetters}" var="letter">
-							<r:tab header="#{letter.toUpperCase()}" switchType="ajax">
-								<r:dataTable value="#{viewUsers.usersForLetter(letter)}" var="u" rowKeyVar="rowNum" styleClass="centered"
-									style="width: 780px;">
-									<r:column styleClass="tcentered">
-										<f:facet name="header">#</f:facet>
-										<h:outputText value="#{rowNum+1}." />
-									</r:column>
-									<r:column styleClass="tcentered">
-										<f:facet name="header">Username</f:facet>
-										<h:outputText value="#{u.username}" />
-									</r:column>
-									<r:column styleClass="tcentered">
-										<f:facet name="header">Name</f:facet>
-										<h:outputText value="#{u.name}" />
-									</r:column>
-									<r:column styleClass="tcentered">
-										<f:facet name="header">Last login</f:facet>
-										<h:outputText value="#{u.lastLogin}">
-											<f:converter binding="#{converterForDate}" />
-										</h:outputText>
-									</r:column>
-									<r:column styleClass="tcentered">
-										<f:facet name="header">Last logout</f:facet>
-										<h:outputText value="#{u.lastLogout}">
-											<f:converter binding="#{converterForDate}" />
-										</h:outputText>
-									</r:column>
-									<r:column styleClass="tcentered">
-										<f:facet name="header">Active</f:facet>
-										<h:selectBooleanCheckbox value="#{u.active}" disabled="true" />
-									</r:column>
-									<r:column styleClass="tcentered">
-										<f:facet name="header">MCP</f:facet>
-										<h:selectBooleanCheckbox value="#{u.mustChangePassword}" disabled="true" />
-									</r:column>
-									<r:column styleClass="tcentered">
-										<f:facet name="header">.</f:facet>
-										<r:commandLink>
-											<h:graphicImage library="images/icons" name="edit.png" alt="Edit" />
-											<r:ajax event="click" execute="@this" listener="#{viewUsers.load(u.id)}"
-												oncomplete="#{r:component('popup')}.show();" />
-										</r:commandLink>
-										&nbsp;
-										<r:commandLink actionListener="#{viewUsers.remove(u.id)}" execute="@this">
-											<h:graphicImage library="images/icons" name="remove.png" alt="Delete" />
-										</r:commandLink>
-										&nbsp;
-										<r:commandLink actionListener="#{appSession.impersonate(u.id)}" execute="@this"
-											rendered="#{appSession.systemUser.activeRole == 'sadmin'}">
-											<h:graphicImage library="images/icons" name="man.png" alt="Impersonate" />
-										</r:commandLink>
-										&nbsp;
-										<r:commandLink actionListener="#{loginManager.resetPassword(u.id)}" execute="@this">
-											<h:graphicImage library="images/icons" name="lock.png" alt="Reset password" />
-										</r:commandLink>
-									</r:column>
-								</r:dataTable>
-							</r:tab>
-						</r:repeat>
-					</r:tabPanel>
+				<h3 class="centered_text">Users</h3>
+				<rich:tabPanel styleClass="centered">
+					<a4j:repeat value="#{userStartLetters}" var="letter">
+						<rich:tab header="#{letter.toUpperCase()}">
+							<bc:table value="#{viewUsers.usersForLetter(letter)}">
+								<!-- Enables editing -->
+								<rich:column styleClass="centered_text">
+									<a4j:commandLink action="#{viewUsers.load(var.id)}">
+										<h:graphicImage library="images/icons" name="edit.png"/>
+										<a4j:ajax oncomplete="#{rich:component('popup')}.show();"/>
+									</a4j:commandLink>
+								</rich:column>
 
-				</r:region>
-			</r:outputPanel>
+								<!-- Enables impersonation -->
+								<rich:column styleClass="centered_text"
+											 rendered="#{appSession.systemUser.activeRole == 'sadmin'}">
+									<a4j:commandLink action="#{appSession.impersonate(var.id)}">
+										<h:graphicImage library="images/icons" name="man.png"/>
+									</a4j:commandLink>
+								</rich:column>
+
+								<!-- Enable reseting of password -->
+								<rich:column styleClass="centered_text">
+									<a4j:commandLink action="#{appSession.resetPassword(var.id)}">
+										<h:graphicImage library="images/icons" name="unlock.png"/>
+									</a4j:commandLink>
+								</rich:column>
+
+								<!-- START: Custom columns -->
+								<bt:pColumn label="Username" value="#{var.username}"/>
+								<bt:pColumn label="Name" value="#{var.name}"/>
+								<bt:pColumn label="Last login" value="#{var.lastLogin}" type="date"/>
+								<bt:pColumn label="Last logout" value="#{var.lastLogout}" type="date"/>
+								<bt:pColumn label="A" value="#{var.attempts}"/>
+								<bt:pColumn label="ACT" value="#{var.active}" type="checkBox"/>
+								<bt:pColumn label="MCP" value="#{var.mustChangePassword}" type="checkBox"/>
+								<!-- END: Custom columns -->
+
+								<!-- Enables user removal -->
+								<rich:column styleClass="centered_text">
+									<a4j:commandLink action="#{viewUsers.remove(var.id)}">
+										<h:graphicImage library="images/icons" name="remove.png"/>
+									</a4j:commandLink>
+								</rich:column>
+
+							</bc:table>
+						</rich:tab>
+					</a4j:repeat>
+				</rich:tabPanel>
+
+			</bc:region>
 		</h:form>
 
-		<r:popupPanel id="popup" autosized="true" modal="true">
+		<rich:popupPanel id="popup" autosized="true" modal="true">
 			<h:form id="uForm">
-				<r:outputPanel ajaxRendered="true">
-					<r:region>
+				<bc:region>
 
-						<fieldset class="centered">
-							<legend>User form:</legend>
-							<h:panelGrid columns="2">
-								<h:outputLabel value="Username:" />
-								<h:inputText size="40" value="#{managedUser.username}" required="true" />
-								<h:outputLabel value="Name:" />
-								<h:inputText size="40" value="#{managedUser.name}" required="true" />
-								<h:outputLabel value="Active:" />
-								<h:selectBooleanCheckbox value="#{managedUser.active}" />
-								<h:outputLabel value="MCP:" />
-								<h:selectBooleanCheckbox value="#{managedUser.mustChangePassword}" />
-								<h:outputLabel value="Role:" />
-								<h:selectOneMenu value="#{managedUser.activeRole}" required="true">
-									<f:selectItem itemLabel="---" itemValue="---" noSelectionOption="true" />
-									<f:selectItem itemLabel="Pathologist" itemValue="patho" />
-									<f:selectItem itemLabel="System Admin" itemValue="sadmin" />
-									<f:selectItem itemLabel="Doctor" itemValue="doct" />
-								</h:selectOneMenu>
-							</h:panelGrid>
-							<hr />
-							<div style="text-align: center;">
-								<r:commandButton value="Save">
-									<r:ajax event="click" listener="#{viewUsers.store}"
-										oncomplete="if(#{empty facesContext.maximumSeverity}) {#{r:component('popup')}.hide();}" />
-								</r:commandButton>
-								<r:commandButton value="Cancel" immediate="true">
-									<r:ajax event="click" execute="@this" listener="#{viewUsers.refresh}"
-										oncomplete="#{r:component('popup')}.hide();" />
-								</r:commandButton>
-							</div>
-						</fieldset>
+					<fieldset>
+						<legend>User form:</legend>
+						<h:panelGrid columns="2">
+							<h:outputLabel value="Username:"/>
+							<h:inputText size="40" value="#{managedUser.username}" required="true"/>
+							<h:outputLabel value="Name:"/>
+							<h:inputText size="40" value="#{managedUser.name}" required="true"/>
+							<h:outputLabel value="Active:"/>
+							<h:selectBooleanCheckbox value="#{managedUser.active}"/>
+							<h:outputLabel value="MCP:"/>
+							<h:selectBooleanCheckbox value="#{managedUser.mustChangePassword}"/>
+							<h:outputLabel value="Role:"/>
+							<h:selectOneMenu value="#{managedUser.activeRole}" required="true">
+								<f:selectItem itemLabel="---" itemValue="#{null}" noSelectionOption="true"/>
+								<f:selectItems value="#{viewUsers.roles}"/>
+							</h:selectOneMenu>
+						</h:panelGrid>
+						<hr/>
+						<div class="centered_text">
+							<a4j:commandButton value="Save" action="#{viewUsers.store}">
+								<a4j:ajax oncomplete="if(#{empty facesContext.maximumSeverity})
+                                                        {#{rich:component('popup')}.hide();}"/>
+							</a4j:commandButton>
+							<a4j:commandButton value="Cancel" action="#{viewUsers.refresh}" immediate="true">
+								<a4j:ajax oncomplete="#{rich:component('popup')}.hide();"/>
+							</a4j:commandButton>
+						</div>
+					</fieldset>
 
-					</r:region>
-				</r:outputPanel>
+				</bc:region>
 			</h:form>
-		</r:popupPanel>
+		</rich:popupPanel>
 
 	</ui:define>
 </ui:composition>
