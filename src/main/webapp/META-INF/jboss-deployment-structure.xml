@@ -2,7 +2,10 @@
 <jboss-deployment-structure>
     <deployment>
         <dependencies>
+            <module name="javax.jcr" export="true" meta-inf="export"/>
             <module name="org.apache.commons.codec" export="true" meta-inf="export"/>
+            <module name="org.apache.commons.io" export="true" meta-inf="export"/>
+            <module name="org.modeshape" export="true" meta-inf="export"/>
             <module name="org.richfaces" export="true" meta-inf="export"/>
         </dependencies>
     </deployment>
