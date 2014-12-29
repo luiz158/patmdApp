@@ -1,12 +1,10 @@
 package com.bitjester.apps.jcr;
 
-import java.io.File;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -19,10 +17,6 @@ public class JCRUtil implements Serializable {
 
     @Inject
     JCRController jcrController;
-
-    @Inject
-    private Logger logger;
-
 
     public void createBiopsyRepo(String bcode) {
         Map<String, Object> options = new HashMap<>();
@@ -41,11 +35,11 @@ public class JCRUtil implements Serializable {
         jcrController.removeNode(nodePath);
     }
 
-    public void storeFile(String bcode, File file){
-        String nodePath = "/biopsies/" + bcode + "/" + image.getName();
+    public void storeFile(String path ,byte[] bytes){
+        String nodePath = "/biopsies/" + path;
         Map<String, Object> options = new HashMap<>();
         options.put("nodeType", "nt:file");
-        options.put("file", file);
+        options.put("bytes", bytes);
         jcrController.createNode(nodePath, options);
     }
 
