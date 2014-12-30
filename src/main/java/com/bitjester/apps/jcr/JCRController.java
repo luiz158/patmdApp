@@ -38,8 +38,8 @@ public class JCRController implements Serializable {
 		Session session = null;
 		try {
 			session = getSession();
-			InputStream istream = new ByteArrayInputStream(bytes);
-			value = session.getValueFactory().createBinary(istream);
+			InputStream stream = new ByteArrayInputStream(bytes);
+			value = session.getValueFactory().createBinary(stream);
 		} catch (Exception e) {
 			logger.severe("Error: " + e.getMessage());
 			e.printStackTrace();
@@ -50,7 +50,8 @@ public class JCRController implements Serializable {
 		return value;
 	}
 
-	public boolean doesNodeExist(String path) {
+	/*
+	private boolean doesNodeExist(String path) {
 		boolean value = false;
 		Session session = null;
 		try {
@@ -65,6 +66,7 @@ public class JCRController implements Serializable {
 		}
 		return value;
 	}
+	*/
 
 	public void createNode(String nodePath, Map<String, Object> options) {
 		Session session = null;
@@ -77,19 +79,18 @@ public class JCRController implements Serializable {
 				break;
 
 			case "nt:file":
-				Node node = tools
-						.findOrCreateNode(session, nodePath, "nt:file");
+				Node node = tools.findOrCreateNode(session, nodePath, "nt:file");
 				// Upload the content to the node.
 				Binary content = bytesToBinary((byte[]) options.get("bytes"));
-				node.addNode("jcr:content", "nt:resource").setProperty(
-						"jcr:data ", content);
+				node.addNode("jcr:content", "nt:resource").setProperty("jcr:data ", content);
 				break;
 
 			default:
-				// TODO - use logger
 				logger.severe("Unknown node type: "+ options.get("nodeType"));
 				break;
 			}
+
+			session.save();
 		} catch (Exception e) {
 			logger.severe("Error: " + e.getMessage());
 			e.printStackTrace();
@@ -103,8 +104,14 @@ public class JCRController implements Serializable {
 		Session session = null;
 		try {
 			session = getSession();
-			if (null == session)
-				System.out.println("Empty session.");
+
+			switch ((String) options.get("nodeType")) {
+
+				default:
+					break;
+			}
+
+			session.save();
 		} catch (Exception e) {
 			logger.severe("Error: " + e.getMessage());
 			e.printStackTrace();
@@ -120,19 +127,15 @@ public class JCRController implements Serializable {
 			session = getSession();
 
 			// Prepare Map for return
-			Map<String, Object> values = new HashMap<String, Object>();
+			Map<String, Object> values = new HashMap<>();
 
 			// Find the node that is to be read
 			Node node = session.getNode(nodePath);
 			switch (node.getPrimaryNodeType().getName()) {
 			case "nt:file":
 				values.put("name", node.getName());
-				values.put("content",
-						node.getNode("jcr:content").getProperty("jcr:data")
-								.getBinary().getStream());
-				values.put("size",
-						node.getNode("jcr:content").getProperty("jcr:data")
-								.getBinary().getSize());
+				values.put("content", node.getNode("jcr:content").getProperty("jcr:data").getBinary().getStream());
+				values.put("size", node.getNode("jcr:content").getProperty("jcr:data").getBinary().getSize());
 				break;
 
 			case "nt:folder":

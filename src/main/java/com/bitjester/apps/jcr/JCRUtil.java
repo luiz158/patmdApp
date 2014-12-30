@@ -19,9 +19,9 @@ public class JCRUtil implements Serializable {
     JCRController jcrController;
 
     public void createBiopsyRepo(String bcode) {
+        String nodePath = "/biopsies/" + bcode;
         Map<String, Object> options = new HashMap<>();
         options.put("nodeType", "nt:folder");
-        String nodePath = "/biopsies/" + bcode;
         jcrController.createNode(nodePath, options);
     }
 

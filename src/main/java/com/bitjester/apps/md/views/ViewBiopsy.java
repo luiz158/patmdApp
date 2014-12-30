@@ -12,8 +12,11 @@ import javax.persistence.EntityManager;
 import com.bitjester.apps.common.utils.BookKeeper;
 import com.bitjester.apps.common.utils.CodeUtil;
 import com.bitjester.apps.common.utils.FacesUtil;
+import com.bitjester.apps.jcr.JCRUtil;
 import com.bitjester.apps.md.entities.Biopsy;
 import com.bitjester.apps.md.entities.Image;
+import org.richfaces.event.FileUploadEvent;
+import org.richfaces.model.UploadedFile;
 
 @Named
 @ViewScoped
@@ -25,6 +28,9 @@ public class ViewBiopsy implements Serializable {
 
 	@Inject
 	private EntityManager em;
+
+	@Inject
+	private JCRUtil jcrUtil;
 
 	private Biopsy managedBiopsy;
 	private Image managedImage;
@@ -74,7 +80,22 @@ public class ViewBiopsy implements Serializable {
 		managedImage = null;
 	}
 
-	public void uploadImage() {
+	public void uploadImage(FileUploadEvent event) {
+		String path = null;
+
+		// Sanity check
+		if(null == managedBiopsy)
+			return;
+
+		// Setting up the biopsy repository.
+		path = managedBiopsy.getCode();
+		jcrUtil.createBiopsyRepo(path);
+
+		// Uploading image data
+		UploadedFile file = event.getUploadedFile();
+		path += "/" + file.getName();
+		jcrUtil.storeFile(path,file.getData());
+
 
 	}
 
