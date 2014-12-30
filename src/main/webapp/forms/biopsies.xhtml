@@ -11,7 +11,7 @@
         <h:form id="mainForm" prependId="false">
             <bc:region>
 
-                <h:commandButton action="biopsy.xhtml?faces-redirect=true" value="+"/>
+                <h:commandButton action="#{viewBiopsies.add}" value="+"/>
 
                 <h3 class="tcentered">Biopsias</h3>
                 <bc:table value="#{biopsies}">
