@@ -1,15 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:rich="http://richfaces.org/rich" xmlns:a4j="http://richfaces.org/a4j">
+	  xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:rich="http://richfaces.org/rich"
+	  xmlns:bc="http://java.sun.com/jsf/composite/tags">
 
 <ui:composition template="/WEB-INF/templates/main.xhtml">
 	<ui:define name="content">
 
 		<h:form id="mainForm" prependId="false">
-			<a4j:outputPanel ajaxRendered="true">
-				<a4j:region>
+			<bc:region>
 
 					<div class="centered" style="width: 240px;">
 						<rich:panel rendered="#{!loggedIn}" header="Enter your credentials.">
@@ -34,8 +33,7 @@
 						</rich:panel>
 					</div>
 
-				</a4j:region>
-			</a4j:outputPanel>
+			</bc:region>
 		</h:form>
 
 	</ui:define>

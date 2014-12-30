@@ -1,102 +1,105 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j"
-	  xmlns:rich="http://richfaces.org/rich" xmlns:bc="http://java.sun.com/jsf/composite/tags">
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich" xmlns:bc="http://java.sun.com/jsf/composite/tags">
 
 <ui:composition template="/templates/main.xhtml">
-	<ui:define name="content">
-		#{appSession.checkRole(null)}
-		<h:form id="mainForm" prependId="false">
-			<bc:region>
+    <ui:define name="content">
+        #{appSession.checkRole(null)}
+        <h:form id="mainForm" prependId="false">
+            <bc:region>
 
-					<h3 class="tcentered">Biopsia - #{managedBiopsy.icode}</h3>
-				<rich:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
-					<rich:tab header="Generalidades">
-							<fieldset>
-								<legend>Paciente:</legend>
-								<h:panelGrid columns="4">
-									<h:outputLabel value="Nombres:" />
-									<h:inputText size="40" required="true" value="#{managedBiopsy.pacient.fname}" />
-									<h:outputLabel value="Edad:" />
-									<rich:inputNumberSlider required="true" enableManualInput="false" showArrows="true"
-										value="#{managedBiopsy.pacient.age}" />
-									<h:outputLabel value="Apellidos:" />
-									<h:inputText size="40" required="true" value="#{managedBiopsy.pacient.lname}" />
-									<h:outputLabel value="Sexo:" />
-									<h:selectOneRadio required="true" value="#{managedBiopsy.pacient.sex}">
-										<f:selectItem itemLabel="F" itemValue="FEMALE" />
-										<f:selectItem itemLabel="M" itemValue="MALE" />
-									</h:selectOneRadio>
-								</h:panelGrid>
-							</fieldset>
-							<hr />
+                <h3 class="tcentered">Biopsia - #{managedBiopsy.icode}</h3>
+                <rich:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
+                    <rich:tab header="Generalidades">
+                        <fieldset>
+                            <legend>Paciente:</legend>
+                            <h:panelGrid columns="4">
+                                <h:outputLabel value="Nombres:"/>
+                                <h:inputText size="40" required="true" value="#{managedBiopsy.pacient.fname}"/>
+                                <h:outputLabel value="Edad:"/>
+                                <rich:inputNumberSlider required="true" enableManualInput="false" showArrows="true"
+                                                        value="#{managedBiopsy.pacient.age}"/>
+                                <h:outputLabel value="Apellidos:"/>
+                                <h:inputText size="40" required="true" value="#{managedBiopsy.pacient.lname}"/>
+                                <h:outputLabel value="Sexo:"/>
+                                <h:selectOneRadio required="true" value="#{managedBiopsy.pacient.sex}">
+                                    <f:selectItem itemLabel="F" itemValue="FEMALE"/>
+                                    <f:selectItem itemLabel="M" itemValue="MALE"/>
+                                </h:selectOneRadio>
+                            </h:panelGrid>
+                        </fieldset>
+                        <hr/>
 
-							<fieldset>
-								<legend>Control interno:</legend>
-								<h:panelGrid columns="4">
-									<h:outputLabel value="Codigo interno:" />
-									<h:inputText size="40" value="#{managedBiopsy.code}" />
-									<h:outputLabel value="iCode:" />
-									<h:inputText size="40" readonly="true" value="#{managedBiopsy.icode}" />
-									<h:outputLabel value="Fecha de entrada:" />
-									<rich:calendar value="#{managedBiopsy.receptionDate}"/>
-									<h:outputLabel value="Medico:" />
-									<h:selectOneListbox value="#{managedBiopsy.doctor}">
-										<f:selectItems />
-									</h:selectOneListbox>
-								</h:panelGrid>
-							</fieldset>
+                        <fieldset>
+                            <legend>Control interno:</legend>
+                            <h:panelGrid columns="4">
+                                <h:outputLabel value="Codigo interno:"/>
+                                <h:inputText size="40" value="#{managedBiopsy.code}"/>
+                                <h:outputLabel value="iCode:"/>
+                                <h:inputText size="40" readonly="true" value="#{managedBiopsy.icode}"/>
+                                <h:outputLabel value="Fecha de entrada:"/>
+                                <rich:calendar value="#{managedBiopsy.receptionDate}"/>
+                                <h:outputLabel value="Medico:"/>
+                                <h:selectOneListbox value="#{managedBiopsy.doctor}">
+                                    <f:selectItems/>
+                                </h:selectOneListbox>
+                            </h:panelGrid>
+                        </fieldset>
 
-							<fieldset>
-								<legend>Diagnostico clinico:</legend>
-								<h:inputTextarea required="true" cols="100" rows="6" value="#{managedBiopsy.clinical_diag}" />
-							</fieldset>
-					</rich:tab>
+                        <fieldset>
+                            <legend>Diagnostico clinico:</legend>
+                            <h:inputTextarea required="true" cols="100" rows="6"
+                                             value="#{managedBiopsy.clinical_diag}"/>
+                        </fieldset>
+                    </rich:tab>
 
-					<rich:tab header="Examenes">
-							<h:panelGrid columns="2">
-								<h:outputLabel value="Fecha de lectura:" />
-								<rich:calendar value="#{managedBiopsy.examDate}"/>
-								<h:outputLabel value="Examen macroscopico:" />
-								<h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.macroExam}" />
-								<h:outputLabel value="Examen microscopico:" />
-								<h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.microExam}" />
-								<h:outputLabel value="ADICAP:" />
-								<h:selectOneListbox value="#{managedBiopsy.adicap}">
-									<f:selectItems />
-								</h:selectOneListbox>
-								<h:outputLabel value="Diagnostico:" />
-								<h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.diagnose}" />
-							</h:panelGrid>
-					</rich:tab>
+                    <rich:tab header="Examenes">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Fecha de lectura:"/>
+                            <rich:calendar value="#{managedBiopsy.examDate}"/>
+                            <h:outputLabel value="Examen macroscopico:"/>
+                            <h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.macroExam}"/>
+                            <h:outputLabel value="Examen microscopico:"/>
+                            <h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.microExam}"/>
+                            <h:outputLabel value="ADICAP:"/>
+                            <h:selectOneListbox value="#{managedBiopsy.adicap}">
+                                <f:selectItems/>
+                            </h:selectOneListbox>
+                            <h:outputLabel value="Diagnostico:"/>
+                            <h:inputTextarea cols="130" rows="6" value="#{managedBiopsy.diagnose}"/>
+                        </h:panelGrid>
+                    </rich:tab>
 
-					<rich:tab header="Imagenes">
-						<rich:dataGrid columns="4" var="f" rowKeyVar="rowNum">
-								<h:panelGrid columns="2">
-									<a4j:mediaOutput element="img" mimeType="image/jpeg"/>
-									<h:panelGrid columns="2">
-										<h:outputText value="Archivo:" />
-										<h:outputText value="#{f.name}" />
-										<h:outputText value="Tamaño:" />
-										<h:outputText value="#{f.length}" />
-									</h:panelGrid>
-								</h:panelGrid>
-						</rich:dataGrid>
-						<br />
+                    <rich:tab header="Imagenes">
+                        <rich:dataGrid columns="4" var="f" rowKeyVar="rowNum">
+                            <h:panelGrid columns="2">
+                                <a4j:mediaOutput element="img" mimeType="image/jpeg"/>
+                                <h:panelGrid columns="2">
+                                    <h:outputText value="Archivo:"/>
+                                    <h:outputText value="#{f.name}"/>
+                                    <h:outputText value="Tamaño:"/>
+                                    <h:outputText value="#{f.length}"/>
+                                </h:panelGrid>
+                            </h:panelGrid>
+                        </rich:dataGrid>
+                        <br/>
 
-						<rich:fileUpload listHeight="0" styleClass="centered"/>
-					</rich:tab>
+                        <rich:fileUpload fileUploadListener="#{viewBiopsy.storeImage}" listHeight="0px"
+                                         styleClass="centered"/>
+                    </rich:tab>
 
-						<hr />
-						<div style="text-align: center;">
-							<h:commandButton value="Save" action="#{viewBiopsy.store}" />
-							<h:commandButton value="Cancel" immediate="true" action="biopsies.xhtml" />
-						</div>
-				</rich:tabPanel>
+                    <hr/>
+                    <div style="text-align: center;">
+                        <h:commandButton value="Save" action="#{viewBiopsy.store}"/>
+                        <h:commandButton value="Cancel" immediate="true" action="biopsies.xhtml"/>
+                    </div>
+                </rich:tabPanel>
 
-			</bc:region>
-		</h:form>
+            </bc:region>
+        </h:form>
 
-	</ui:define>
+    </ui:define>
 </ui:composition>
 </html>

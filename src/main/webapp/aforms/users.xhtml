@@ -8,7 +8,7 @@
 <ui:composition template="/WEB-INF/templates/main.xhtml">
 	<ui:define name="content">
 		#{appSession.checkRole('sadmin')}
-		<h:form id="mainForm">
+		<h:form id="mainForm" prependId="false">
 			<bc:region>
 
 				<h3 class="centered_text">Users</h3>

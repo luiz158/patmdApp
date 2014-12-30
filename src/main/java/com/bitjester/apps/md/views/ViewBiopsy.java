@@ -80,8 +80,8 @@ public class ViewBiopsy implements Serializable {
 		managedImage = null;
 	}
 
-	public void uploadImage(FileUploadEvent event) {
-		String path = null;
+	public void storeImage(FileUploadEvent event) {
+		String path;
 
 		// Sanity check
 		if(null == managedBiopsy)
@@ -95,8 +95,6 @@ public class ViewBiopsy implements Serializable {
 		UploadedFile file = event.getUploadedFile();
 		path += "/" + file.getName();
 		jcrUtil.storeFile(path,file.getData());
-
-
 	}
 
 	// ================================
