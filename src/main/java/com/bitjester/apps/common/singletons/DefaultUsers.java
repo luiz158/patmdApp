@@ -1,4 +1,4 @@
-package com.bitjester.apps.common.watchdogs;
+package com.bitjester.apps.common.singletons;
 
 import com.bitjester.apps.common.entities.AppUser;
 import com.bitjester.apps.common.utils.BookKeeper;
