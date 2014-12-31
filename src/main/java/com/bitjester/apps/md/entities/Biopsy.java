@@ -61,13 +61,8 @@ public class Biopsy extends BaseEntity {
 		super();
 		receptionDate = new Date();
 		pacient = new Patient();
-		images = new ArrayList<Image>(0);
+		images = new ArrayList<>(0);
 		icode = CodeUtil.generateCode('U');
-	}
-
-	public void generateCode() throws Exception {
-		if (null == code && null != examDate)
-			code = HashUtil.calc_HashSHA(id.toString() + examDate.toString());
 	}
 
 	// --- Getters & Setters

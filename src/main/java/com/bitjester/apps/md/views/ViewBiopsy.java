@@ -87,13 +87,25 @@ public class ViewBiopsy implements Serializable {
 			return;
 
 		// Setting up the biopsy repository.
-		path = managedBiopsy.getCode();
+		path = managedBiopsy.getIcode();
 		jcrUtil.createBiopsyRepo(path);
 
 		// Uploading image data
 		UploadedFile file = event.getUploadedFile();
 		path += "/" + file.getName();
 		jcrUtil.storeFile(path,file.getData());
+
+
+		// Using JPA
+		Image image =  new Image();
+		image.setBiopsy(managedBiopsy);
+		image.setActive(Boolean.TRUE);
+		image.setType(file.getContentType());
+		image.setData(file.getData());
+		image.setFileSize((long) file.getData().length);
+
+		managedBiopsy.getImages().add(image);
+
 	}
 
 	// ================================
@@ -106,9 +118,11 @@ public class ViewBiopsy implements Serializable {
 		return managedBiopsy;
 	}
 
+	/*
 	public void setManagedBiopsy(Biopsy managedBiopsy) {
 		this.managedBiopsy = managedBiopsy;
 	}
+	*/
 
 	public void load(Long id) {
 		managedBiopsy = em.find(Biopsy.class, id);
@@ -124,8 +138,8 @@ public class ViewBiopsy implements Serializable {
 		// If the object is not persisted
 		if (managedBiopsy.isNew()) {
 			// Change the code until it is not present in the DB.
-			while (checkCode(managedBiopsy.getCode()))
-				managedBiopsy.setCode(CodeUtil.generateCode('U'));
+			while (checkCode(managedBiopsy.getIcode()))
+				managedBiopsy.setIcode(CodeUtil.generateCode('U'));
 		}
 		bk.store(managedBiopsy);
 		// managedBiopsy = null;

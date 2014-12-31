@@ -10,7 +10,8 @@
         <h:form id="mainForm" prependId="false">
             <bc:region>
 
-                <h3 class="tcentered">Biopsia - #{managedBiopsy.icode}</h3>
+                <h3 class="centered_text">Biopsia</h3>
+                <h3 class="centered_text">#{managedBiopsy.icode}</h3>
                 <rich:tabPanel switchType="client" styleClass="centered" style="width: 800px;">
                     <rich:tab header="Generalidades">
                         <fieldset>
@@ -56,7 +57,7 @@
                     </rich:tab>
 
                     <rich:tab header="Examenes">
-                        <h:panelGrid columns="2">
+                        <h:panelGrid columns="1">
                             <h:outputLabel value="Fecha de lectura:"/>
                             <rich:calendar value="#{managedBiopsy.examDate}"/>
                             <h:outputLabel value="Examen macroscopico:"/>
@@ -72,7 +73,7 @@
                         </h:panelGrid>
                     </rich:tab>
 
-                    <rich:tab header="Imagenes">
+                    <rich:tab header="Imagenes" rendered="#{!empty managedBiopsy.id}">
                         <rich:dataGrid columns="4" var="f" rowKeyVar="rowNum">
                             <h:panelGrid columns="2">
                                 <a4j:mediaOutput element="img" mimeType="image/jpeg"/>
@@ -86,8 +87,8 @@
                         </rich:dataGrid>
                         <br/>
 
-                        <rich:fileUpload fileUploadListener="#{viewBiopsy.storeImage}" listHeight="0px"
-                                         styleClass="centered"/>
+                        <rich:fileUpload acceptedTypes="jpg, gif, png, bmp" listHeight="0px" styleClass="centered"
+                                         fileUploadListener="#{viewBiopsy.storeImage}"/>
                     </rich:tab>
 
                     <hr/>

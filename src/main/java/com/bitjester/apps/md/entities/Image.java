@@ -36,11 +36,11 @@ public class Image extends BaseEntity {
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	@Column(table = "imageContent")
-	private Byte[] preview;
+	private byte[] preview;
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	@Column(table = "imageContent")
-	private Byte[] data;
+	private byte[] data;
 
 	// --- Getters & Setters
 	// --- Accessor methods
@@ -117,19 +117,19 @@ public class Image extends BaseEntity {
 		this.fileSize = fileSize;
 	}
 
-	public Byte[] getPreview() {
+	public byte[] getPreview() {
 		return preview;
 	}
 
-	public void setPreview(Byte[] preview) {
+	public void setPreview(byte[] preview) {
 		this.preview = preview;
 	}
 
-	public Byte[] getData() {
+	public byte[] getData() {
 		return data;
 	}
 
-	public void setData(Byte[] data) {
+	public void setData(byte[] data) {
 		this.data = data;
 	}
 }
